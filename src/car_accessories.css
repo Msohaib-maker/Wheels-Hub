@@ -1,0 +1,164 @@
+
+.container {
+    position: relative;
+    width: 100%;
+    background-color: black;
+    /* Adjust as needed */
+  }
+  
+  .background-image {
+    width: auto;
+    height: auto;
+    display: block;
+    max-height: 400px;
+  }
+  
+  .overlay-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: white;
+  }
+  
+  .overlay-text h2 {
+    margin-bottom: 10px;
+    font-size: 24px;
+  }
+  
+  .overlay-text p {
+    font-size: 16px;
+    margin: 0;
+  }
+  
+
+
+.item-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    gap: 20px; /* Adjust the gap between items */
+  }
+
+  .Box2{
+    padding: 15px;
+  width: 180px;
+  height: auto;
+  margin-left: 10px;
+  border-radius: 15px; /* Adjust as needed for the roundness */
+  background-color: rgb(226, 226, 226);
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.Box2 img{
+    width: 100%;
+    height: 100%;
+    background-color: white;
+}
+
+.Box2 p{
+    margin-top: 4px;
+    margin-bottom: 0px;
+}
+
+.Box2 button{
+    margin-top: 8px;
+}
+
+
+.custom-button {
+    background-color: rgb(255, 255, 123);
+    color: black;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 15px;
+  }
+
+
+
+  .text-style{
+    font-size: 18px;
+    font-weight: 500;
+    color: rgb(27, 27, 27);
+  }
+
+  .text-style2{
+    font-size: 15px;
+    color: rgb(174, 24, 107);
+    font-weight: 700;
+  }
+
+
+  .rating {
+    display: inline-block;
+  }
+  
+  .rating input {
+    display: none;
+  }
+  
+  .rating label {
+    font-size: 30px;
+    color: #ccc;
+    cursor: pointer;
+  }
+  
+  .rating input:checked ~ label {
+    color: #ffc107; /* Change to the color you want for the filled star */
+  }
+
+
+  .Box3{
+    position: absolute;
+    padding: 15px;
+    transform: translate(350%,-17%);
+  width: 280px;
+  height: auto;
+  margin-left: 20px;
+ /* Adjust as needed for the roundness */
+  background-color: rgb(239, 239, 239);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.Box3 input{
+    width: 100%;
+    height: 40px;
+    margin-top: 10px;
+    margin-bottom: 0px;
+}
+
+.button-submit{
+    background-color: rgb(55, 156, 174);
+    width: 100%;
+    height: 40px;
+    border: none;
+    color: white;
+    margin-top: 10px;
+}
+
+.container2{
+    position: relative;
+    width: 100%;
+    height: 600px;
+    background-color: rgb(44,52,92);
+}
+
+.container2 img{
+    width: auto;
+    height: auto;
+    transform: translate(100%,40%);
+}
+
+.container2 p{
+    position: absolute;
+    transform: translate(80%,150%);
+    font-size: 20px;
+    color: white;
+}

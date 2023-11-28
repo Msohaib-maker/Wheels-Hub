@@ -1,0 +1,31 @@
+.containerNew{
+    position: relative;
+    width: 50%;
+    height: auto;
+    background-color: rgb(195, 197, 206);
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 10px;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    margin-left: 10px;
+}
+
+.containerNew img{
+    width: auto;
+    height: auto;
+    
+}
+
+.containerNew div{
+    margin-left: 60px;
+    
+}
+
+
+.button-customize{
+    margin-top: 70px;
+    height: 40px;
+    background-color: greenyellow;
+    border: none;
+}
