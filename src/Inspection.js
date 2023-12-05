@@ -6,9 +6,9 @@ function Inspection(props){
     return(
         <div class="container2">
             <img src='./toyota.png'/>
-            <p>Ge the best Inspection on HamzaWheels</p>
+            <p>Ge the best Inspection on ApnaWheels</p>
             <div class="Box3">
-                <h2>Schedule HamzaWheels Car Inspection</h2>
+                <h4>Schedule ApnaWheels Car Inspection</h4>
                 <input type='text' placeholder='Enter Location'/>
                 <input type='text' placeholder='House no.'/>
                 <input type='text' placeholder='Make/Model/Variant'/>
