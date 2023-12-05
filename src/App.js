@@ -40,7 +40,7 @@ function App() {
         <Routes>
           <Route path="/" element={<CarAccessories />} />
           <Route path="/Inspect" element={<Inspection />} />
-          <Route path="/CarSale" element={<CarSale name="BMW X1" price="32 lacs" city="Lahore" specs="2020 | petrol | 1300cc | 23000 km" info="Updated 15 min ago"/>} />
+          <Route path="/CarSale" element={<CarSale name="BMW X1" price="32 lacs" city="Lahore" specs="2020 | petrol | 1300cc | 23000 km" info="Posted 15 min ago"/>} />
         </Routes>
       </div>
     </Router>
