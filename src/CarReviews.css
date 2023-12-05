@@ -1,0 +1,31 @@
+.reviews-container {
+    width: 80%;
+    margin: 20px auto;
+    text-align: center;
+  }
+  
+  .review {
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    padding: 15px;
+    margin: 15px 0;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+  }
+  
+  .rating {
+    color: #f39c12; /* Use a color that represents ratings */
+  }
+  
+  .view-all-reviews {
+    display: block;
+    margin-top: 20px;
+    text-decoration: none;
+    color: #3498db;
+    font-weight: bold;
+  }
+  
+  .view-all-reviews:hover {
+    text-decoration: underline;
+  }
+  

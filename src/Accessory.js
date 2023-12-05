@@ -24,9 +24,9 @@ function Accessory(props){
     return(
         <div class="Box2">
             <img src={props.image}/>
-            {Rating}
+            {/* {Rating} */}
             <p class="text-style">{props.name}</p>
-            <p class="text-style2">{props.price}</p>
+            <p class="text-style2">Rs. {props.price}</p>
             <button class="custom-button">Add to cart</button>
         </div>
     );
