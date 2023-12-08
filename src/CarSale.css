@@ -1,8 +1,8 @@
 .containerNew{
     position: relative;
-    width: 50%;
+    width: 55%;
     height: auto;
-    background-color: rgb(233, 233, 233);
+    background-color: rgb(222, 216, 216);
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
     padding: 10px;
     display: flex;
@@ -10,23 +10,34 @@
     align-items: flex-start;
     margin-left: 10px;
     border-radius: 10px;
+    margin: 10px;
 }
 
 .containerNew img{
-    width: auto;
-    height: auto;
+    width: 220px;
+    height: 160px;
     
 }
 
 .containerNew div{
-    margin-left: 60px;
-    
+    margin-left: 30px;
+}
+
+
+.price-custom{
+    transform: translate(320%,10%);
+    position: absolute;
+    color: rgb(240, 115, 47);
+    font-size: 24px;
+
 }
 
 
 .button-customize{
-    margin-top: 70px;
+    transform: translate(260%,280%);
+    position: absolute;
     height: 40px;
-    background-color: greenyellow;
+    width: 100px;
+    background-color: rgb(69, 153, 183);
     border: none;
 }

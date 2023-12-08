@@ -1,21 +1,19 @@
 
 import './CarSale.css'
-//import { getDatabase, ref, onValue } from "firebase/database";
+import UploadCar from './UploadCar';
 
 function CarSale(props){
-    // let data;
-    // console.log("firebase db")
-    // const db = getDatabase();
-    // const starCountRef = ref(db, 'Customers/ZFvoGCRqc9Pj5bNjWgSE4ltAhUv2');
-    // onValue(starCountRef, (snapshot) => {
-    //     data = snapshot.val();
-    //     //updateStarCount(postElement, data);
-    //     console.log(data)
-    // });
+
+    let flag = false
+    if(props.image != ''){
+        flag = true
+    }
 
     return(
-        <div class="containerNew">
-            <img src="./car.jpg" alt="Background Image"></img>
+        <div>
+            <div class="containerNew">
+            {!flag && <img src="./car.jpg" alt="Background Image"></img>}
+            {flag && <img src={props.image} alt="Background Image"></img>}
             <div>
                 <p>{props.name}</p>
                 <p>{props.city}</p>
@@ -24,10 +22,12 @@ function CarSale(props){
             </div>
             <div>
                 {/* <p>Registered on {data['name']}</p> */}
-                <p>{props.price}</p>
+                <p className='price-custom'>{props.price} lacs</p>
                 <button class="button-customize">Contact</button>
             </div>
         </div>
+        </div>
+        
     );
 }
 
