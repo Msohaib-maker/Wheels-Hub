@@ -1,11 +1,12 @@
 
 .container {
-    position: relative;
-    width: 100%;
-    background-color: black;
-    /* Adjust as needed */
-  }
-  
+  position: relative;
+  width: 100%;
+  max-width: 1368px; /* Set a maximum width if needed */
+  margin: 0 auto; /* Center the container horizontally */
+  background-color: black;
+  /* Adjust other styles as needed */
+}
   .background-image {
     width: auto;
     height: auto;
@@ -24,7 +25,7 @@
   
   .overlay-text h2 {
     margin-bottom: 10px;
-    font-size: 24px;
+    font-size: 38px;
   }
   
   .overlay-text p {

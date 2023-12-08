@@ -1,0 +1,24 @@
+.container_MP {
+    position: relative;
+    width: 100%;
+    max-width: 1368px; /* Set a maximum width if needed */
+    margin: 0 auto; /* Center the container horizontally */
+    background-color: black;
+    /* Adjust other styles as needed */
+  }
+
+  .overlay-text_MP {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: white;
+  }
+
+  .backgroundimage_mp {
+    display: inline-block;
+    width: 410px; /* Set a specific width for all images */
+    height: 200px;
+    margin: 15px; /* Adjust spacing between images */
+}

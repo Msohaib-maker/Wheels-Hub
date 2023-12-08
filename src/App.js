@@ -13,6 +13,7 @@ import UserProfile from './UserProfile';
 import Reviews from './Review';
 import UploadCar from './UploadCar';
 import CarList from './CarList';
+import MainPage from './MainPage';
 
 function App() {
 
@@ -29,11 +30,10 @@ function App() {
           </ul>
         </nav> */}
         <Header/>
-
+<br></br>
         {/* Routes definition */}
         <Routes>
-         <Route path="/" element={<><Accessories/>
-          <CarSale name="BMW X1" price="32 lacs" city="Lahore" specs="2020 | petrol | 1300cc | 23000 km" info="Updated 15 min ago"/> <Inspection/></>}/>
+         <Route path="/" element={<MainPage/>}/>
           <Route path="/Accesories" element={<CarAccessories />} />
           <Route path="/Inspect" element={<Inspection />} />
           <Route path="/CarSale" element={<CarList/>} />
@@ -46,7 +46,8 @@ function App() {
         </Routes>
       </div>
     </Router>
-    {/* <Footer/> */}
+    <br/><br/>
+    <Footer/>
     </>
    
   );
