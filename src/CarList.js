@@ -11,9 +11,9 @@ function CarList(props){
 
     let cars = []
     const db = getDatabase();
-    const starCountRef = ref(db, 'cars/');
+    const CarListRef = ref(db, 'cars/');
         
-    onValue(starCountRef, (snapshot) => {
+    onValue(CarListRef, (snapshot) => {
             const data = snapshot.val();
             
             if(data == null){
@@ -35,6 +35,7 @@ function CarList(props){
                         specs={ele.mileage}
                         image={ele.file.file_remote}
                         info="Updated 15 min ago"
+                        phoneNo={ele.contact}
                     />
                 ));
                 

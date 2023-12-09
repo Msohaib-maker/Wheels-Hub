@@ -1,17 +1,57 @@
-import { Component } from "react"
+import { useState, Component } from "react"
 import './car_accessories.css';
 import Accessory from "./Accessory";
+import { onValue, getDatabase, ref } from "firebase/database";
 
 function CarAccessories(props)
 {
 
-    // backend Data
+    const [AccessoriesData, setAccessoriesData] = useState({
+        AccessoriesDataList: []
+    })
+
+    // Dummy backend Data
     let SpareParts = [
-        {image: "./car_tyre.jpg",name: "Car tyre", price:"12065"},
-        {image: "./car_motor.jpg",name: "Car Motor", price:"42050"},
-        {image: "./car_battery.jpg",name: "Car battery", price:"22050"},
-        {image: "./rims.jpg",name: "Car Rims", price:"8050"}
+        {image: "./car_tyre.jpg"},
+        {image: "./car_motor.jpg"},
+        {image: "./battery.webp"},
+        {image: "./rims.jpg"},
+        {image: "./car_battery.jpg"},
+        {image: "./carmotor.jpeg"}
     ]
+
+    const db = getDatabase();
+    const CarAccessoryRef = ref(db, 'accessory/');
+
+    let accessoryData = []
+
+
+    // Reading from firebase
+    onValue(CarAccessoryRef, (snapshot) => {
+        const data = snapshot.val()
+
+        if(data){
+            const dataArray = Object.values(data);
+            accessoryData = dataArray.map((ele, i) => (
+                
+                <Accessory
+                    image={SpareParts[i].image} // Add a unique key prop
+                    name={ele.name}
+                    price={ele.price}
+                />
+            ));
+
+            if(AccessoriesData.AccessoriesDataList.length !== accessoryData.length){
+                setAccessoriesData({
+                    AccessoriesDataList: accessoryData
+                })
+            }
+        }
+
+    });
+
+
+
 
     const MapArr = SpareParts.map((ele) => {
         return <Accessory image={ele.image} name={ele.name} price={ele.price}/>
@@ -31,7 +71,7 @@ function CarAccessories(props)
             <h2>Best Car Accessories</h2>
 
             <ul class="item-list">
-                {MapArr}
+                {accessoryData}
             </ul>
 
             
