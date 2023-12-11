@@ -47,6 +47,9 @@ function Header() {
                             <li class="nav-item">
                                 <Link class="nav-link active" aria-current="page" to="/UploadCar">Post a Car</Link>
                             </li>
+                            <li class="nav-item">
+                                <Link class="nav-link active" aria-current="page" to="/FilteredCar">Filtered Cars</Link>
+                            </li>
                         </ul>
                     </div>
                     {/* <form class="d-flex" role="search">

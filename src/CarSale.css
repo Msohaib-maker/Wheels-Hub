@@ -3,7 +3,7 @@
     width: 55%;
     height: auto;
     background-color: rgb(222, 216, 216);
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    box-shadow: 0px 4px 6px rgba(255, 0, 0, 0.1);
     padding: 10px;
     display: flex;
     flex-direction: row;
@@ -45,71 +45,76 @@
 /* Jareer css code */
 
 .car-container {
-    display: flex;
-    border: 1px solid #ddd;
-    margin: 10px;
-    border-radius: 8px;
-    overflow: hidden;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    position: relative;
-    height: 300px; /* Adjust the width as needed */
-  }
-  
-  .image-container {
-    flex: 1;
-    overflow: hidden;
-    margin: 20px;
-    border: 1px solid #c6c1c1;
-  }
-  
-  img {
-    width: 100%;
-    height: auto;
-    max-width: 100%;
-    max-height: 100%; 
-    object-fit: cover;
-  }
-  
-  .details-container {
-    flex: 1;
-    padding: 5px;
-  }
-  
-  h2 {
-    font-size: 1.5rem;
-    margin-bottom: 30px;
-    margin-left: 30px;
-  }
-  
-  p {
-    margin-bottom: 10px;
-    color: #555;
-    margin-left: 30px;
-  }
-  h3{
-      margin-right: 10px;
-  }
-  
-  .car-container:hover {
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-    transform: translateY(-2px);
-  }
-  .button-container {
-      position: absolute;
-      bottom: 0;
-      right: 0;
-      margin: 10px;
-    }
-    
-    .contact-button {
-      background-color: #4CAF50;
-      color: white;
-      border: none;
-      padding: 10px 15px;
-      text-align: center;
-      text-decoration: none;
-      display: inline-block;
-      font-size: 14px;
-      cursor: pointer;
-      border-radius: 5px;
-    }
+  display: flex;
+  border: 1px solid #ddd;
+  margin: 10px;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  position: relative;
+  height: 300px; /* Adjust the width as needed */
+  background-color: aliceblue;
+}
+.image-container {
+  flex: 1;
+  overflow: hidden;
+  margin: 20px;
+  border: 1px solid #c6c1c1;
+  border-radius: 8px;
+}
+
+img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.details-container {
+  flex: 1;
+  padding: 20px;
+}
+
+h2 {
+  font-size: 1.8rem;
+  margin-bottom: 10px;
+}
+
+p {
+  margin-bottom: 10px;
+  color: #555;
+}
+
+h3 {
+  font-size: 1.2rem;
+  margin-right: 10px;
+  margin-bottom: 20px;
+}
+
+.car-container:hover {
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  transform: translateY(-2px);
+}
+
+.button-container {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  margin: 20px;
+}
+
+.contact-button {
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 14px;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background-color 0.3s;
+}
+
+.contact-button:hover {
+  background-color: #45a049;
+}

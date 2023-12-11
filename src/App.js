@@ -14,6 +14,9 @@ import Reviews from './Review';
 import UploadCar from './UploadCar';
 import CarList from './CarList';
 import MainPage from './MainPage';
+import FilteredCar from './FilteredCar';
+import UsedCar from './UsedCar';
+import NewCar from './NewCar';
 
 function App() {
 
@@ -42,7 +45,9 @@ function App() {
           <Route path="/UserInfo" element={<UserProfile/>}/>  
           <Route path="/Review" element={<Reviews/>}/>
           <Route path="/UploadCar" element={<UploadCar/>}/>
-
+          <Route path="/FilteredCar" element={<FilteredCar/>}/>
+          <Route path="/UsedCar" element={<UsedCar/>}/>
+          <Route path="/NewCar" element={<NewCar/>}/>
         </Routes>
       </div>
     </Router>

@@ -17,17 +17,24 @@ function CarSale(props){
     };
 
     return(
+      <>
+      
         <div className="car-container">
       <div className="image-container">
         <img src={props.image} alt="Image" />
       </div>
       <div className="details-container">
-        <h2>{props.name}</h2>
+      <h3 style={{color: 'blue' }}>{props.name} for sale</h3>
         <p>{props.city}</p>
-        <p>{props.specs}</p>
+        <br></br>
+        <p>{props.specs} | {props.cc} | {props.year} | Petrol</p>
+        <br></br>
+        <p>{props.type} Car</p>
+        <br></br>
+        <p>{props.info}</p>
       </div>
       <div className="price-container">
-        <h3>{props.price}</h3>
+        <h3>PKR {props.price} lacs</h3>
       </div>
       <div className="button-container">
         <button className="contact-button" onClick={handleButtonClick}>
@@ -36,7 +43,7 @@ function CarSale(props){
         {showPhoneNumber && <p>{props.phoneNo}</p>}
       </div>
     </div>
-        
+    </>  
     );
 }
 
