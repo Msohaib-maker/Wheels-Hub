@@ -1,9 +1,36 @@
 import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import './Header.css'
+import {auth} from './firebase';
+import { signOut, onAuthStateChanged  } from "firebase/auth";
+import { useState, useEffect } from "react";
 
 function Header() {
-    const navigate = useNavigate(); 
+    const navigate = useNavigate();
+
+    const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  useEffect(() => {
+    const unsubscribe = auth.onAuthStateChanged((user) => {
+      if (user) {
+        setIsLoggedIn(true);
+      } else {
+        setIsLoggedIn(false);
+      }
+    });
+
+    return () => unsubscribe();
+  }, []);
+
+    const handleSignOut = () => {
+        signOut(auth).then(() => {
+
+        }).catch((error) => {
+            // An error happened.
+        });
+    };
+
+
     const handleClick = () => {
         navigate('/UserInfo', {
             state: {
@@ -57,8 +84,18 @@ function Header() {
                             <button class="btn btn-outline-success" type="submit">Search</button>
                         </form> */}
 
-                    <Link class="nav-link active" aria-current="page" to="/Signup"> SignUp</Link>
-                    <Link class="nav-link active" aria-current="page" to="/Login"> Login</Link>
+                    {
+                        isLoggedIn && 
+                        <Link class="nav-link active" aria-current="page" onClick={handleSignOut}> Logout</Link>
+                    }
+                    {
+                        !isLoggedIn && 
+                        <div class="row">
+                                <Link class="nav-link active" aria-current="page" to="/Signup"> SignUp</Link>
+                                <Link class="nav-link active" aria-current="page" to="/Login"> Login</Link>
+                        </div>
+                    }
+                    
                     <Link
                         className="nav-link active"
                         aria-current="page"

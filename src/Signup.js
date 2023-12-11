@@ -3,6 +3,8 @@ import './StyledSignup.css';
 import {auth} from './firebase';
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { Link, useNavigate } from 'react-router-dom';
+import { getDatabase, ref, set } from "firebase/database";
+
 
 const SignupForm = () => {
   const [fullName, setFullName] = useState('');
@@ -15,24 +17,35 @@ const SignupForm = () => {
 
   const [signupSuccess, setSignupSuccess] = useState(false);
   const nav = useNavigate();
+  const db = getDatabase();
 
   const handleSignup = (e) => {
     e.preventDefault();
     // Add user registration logic here
+
     createUserWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
-        // Signed up 
+        // Successful Signed up 
         const user = userCredential.user;
-        // Successful sign up
-        setSignupSuccess(true);
-        nav("/");
-        
-     })
-    .catch((error) => {
-      const errorCode = error.code;
-      const errorMessage = error.message;
-      // ..
-    });
+        set(ref(db, 'users/' + user.uid), {
+          City: city,
+          Country: country,
+          address: streetAddress,
+          person_email: email,
+          person_name: fullName,
+          zip_code: postalCode
+        })
+        .then(() => {
+          alert("Sign Up");
+          nav("/");
+        });
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+    
+      });
+
   };
 
   return (

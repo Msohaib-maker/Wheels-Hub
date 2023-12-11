@@ -1,13 +1,32 @@
 import React, { useState } from 'react';
 import './Styledlogin.css';
+import { signInWithEmailAndPassword } from "firebase/auth";
+import { auth } from './firebase';
+import { Link, useNavigate } from 'react-router-dom';
 
 const LoginForm = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
 
+  const nav = useNavigate();
+
   const handleLogin = (e) => {
     e.preventDefault();
-  };
+    signInWithEmailAndPassword(auth, username, password)
+        .then((userCredential) => {
+          // Signed in 
+          const user = userCredential.user;
+          alert("Success");
+          nav("/");
+        
+        })
+        .catch((error) => {
+          const errorCode = error.code;
+          const errorMessage = error.message;
+        });
+    };
+
+
 
   return (
     <div className="login-container">
