@@ -1,9 +1,22 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import './Header.css'
 
 function Header() {
-    return (
+    const navigate = useNavigate(); 
+    const handleClick = () => {
+        navigate('/UserInfo', {
+            state: {
+                fullName: 'John Doe',
+                email: 'john.doe@example.com',
+                password: '123',
+                streetAddress: '123',
+                city: 'Lahore',
+                country: 'pak',
+                postalCode: '123',
+            },
+        });
+    }; return (
         <div>
             <nav class="navbar navbar-expand-lg custom-navbar">
                 <div class="container-fluid">
@@ -40,10 +53,19 @@ function Header() {
                             <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
                             <button class="btn btn-outline-success" type="submit">Search</button>
                         </form> */}
+
                     <Link class="nav-link active" aria-current="page" to="/Signup"> SignUp</Link>
-                        <Link class="nav-link active" aria-current="page" to="/Login"> Login</Link>
-                        <Link class="nav-link active" aria-current="page" to="/UserInfo"> User Info</Link>
-                </div>
+                    <Link class="nav-link active" aria-current="page" to="/Login"> Login</Link>
+                    <Link
+                        className="nav-link active"
+                        aria-current="page"
+                        to="/UserInfo"
+                        onClick={(e) => {
+                            e.preventDefault(); 
+                            handleClick();     }}
+                    >
+                        User Info
+                    </Link></div>
             </nav>
         </div>
     );
