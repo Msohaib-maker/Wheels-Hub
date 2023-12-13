@@ -36,6 +36,12 @@ const SignupForm = () => {
           zip_code: postalCode
         })
         .then(() => {
+          localStorage.setItem('City', city)
+              localStorage.setItem('Country', country)
+              localStorage.setItem('address', streetAddress)
+              localStorage.setItem('person_email', email)
+              localStorage.setItem('person_name', fullName)
+              localStorage.setItem('zip_code', postalCode)
           alert("Sign Up");
           nav("/");
         });

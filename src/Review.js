@@ -1,17 +1,44 @@
-import React, { useState } from 'react';
+import React, { useEffect,useState } from 'react';
 import './CarReviews.css'; // Import the CSS file for styling
+import { Link, useNavigate } from 'react-router-dom';
+import {auth} from './firebase';
+import { onAuthStateChanged  } from "firebase/auth";
+import { getDatabase, ref, onValue } from "firebase/database";
+
 
 const Review = ({ review }) => {
   return (
     <div className="review">
-      <h4>{review.userName}</h4>
+      <h4>{review.username}</h4>
       <p>{review.comment}</p>
-      <div className="rating">Rating: {review.rating}/5</div>
+      <div className="rating">Rating: {review.ratings}/5</div>
     </div>
   );
 };
 
 const Reviews = () => {
+
+  const [isDisabled, setIsDisabled] = useState(false);
+  const [Uid, setUid] = useState('');
+  
+  const db = getDatabase();
+  const nav = useNavigate();
+
+  useEffect(() => {
+    const unsubscribe = auth.onAuthStateChanged((user) => {
+      if (user) {
+        setUid(user.uid);
+        setIsDisabled(true);
+      } else {
+        setIsDisabled(false);
+        setUid('');
+      }
+    });
+
+    return () => unsubscribe();
+  }, []);
+
+
   const initialReviews = [
     {
       userName: 'Muhammad Jareer',
@@ -26,22 +53,59 @@ const Reviews = () => {
     // Add more reviews as needed
   ];
 
-  const [reviews, setReviews] = useState(initialReviews);
+
+
+
+
+  const [reviews, setReviews] = useState([]);
+
+  const starCountRef = ref(db, 'reviews/');
+  onValue(starCountRef, (snapshot) => {
+      const data = snapshot.val();
+      
+
+      if(data){
+        const dataArray = Object.values(data);
+
+        const revs = dataArray.map((ele, index) =>{
+          return <Review key={index} review={ele} />
+        })
+
+        if(reviews.length != dataArray.length){
+          setReviews(revs);
+        }
+
+      }
+      else{
+
+      }
+              
+  });
+  
+
+  
+
+
 
   return (
-    <div className="reviews-container">
+    <div>
+      {isDisabled &&
+        <Link className="nav-link active" aria-current="page" to="/AddReview">
+        <button className="button-styling">Add your review</button>
+      </Link>
+      }
+
       
+      <div className="reviews-container">
       <h2>Customer Reviews</h2>
       <div>
-        {reviews.map((review, index) => (
-          <Review key={index} review={review} />
-        ))}
+        {reviews}
       </div>
       {/* Add a button or link to navigate to a full reviews page */}
-      <a href="/all-reviews" className="view-all-reviews">
-        View All Reviews
-      </a>
+      
     </div>
+    </div>
+    
   );
 };
 

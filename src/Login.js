@@ -3,12 +3,14 @@ import './Styledlogin.css';
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from './firebase';
 import { Link, useNavigate } from 'react-router-dom';
+import { getDatabase, ref, onValue } from "firebase/database";
 
 const LoginForm = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
 
   const nav = useNavigate();
+  const db = getDatabase();
 
   const handleLogin = (e) => {
     e.preventDefault();
@@ -16,9 +18,22 @@ const LoginForm = () => {
         .then((userCredential) => {
           // Signed in 
           const user = userCredential.user;
-          alert("Success");
-          nav("/");
-        
+          const starCountRef = ref(db, 'users/' + user.uid);
+          onValue(starCountRef, (snapshot) => {
+              const data = snapshot.val();
+
+
+              // Cache data locally
+              localStorage.setItem('City', data['City'])
+              localStorage.setItem('Country', data['Country'])
+              localStorage.setItem('address', data['address'])
+              localStorage.setItem('person_email', data['person_email'])
+              localStorage.setItem('person_name', data['person_name'])
+              localStorage.setItem('zip_code', data['zip_code'])
+              alert("Success");
+              nav("/");
+          });
+          
         })
         .catch((error) => {
           const errorCode = error.code;

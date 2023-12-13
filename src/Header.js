@@ -13,6 +13,7 @@ function Header() {
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged((user) => {
       if (user) {
+        
         setIsLoggedIn(true);
       } else {
         setIsLoggedIn(false);

@@ -28,4 +28,11 @@
   .view-all-reviews:hover {
     text-decoration: underline;
   }
+
+
+  .button-styling{
+    padding: 10px;
+    width: auto;
+    height: auto;
+  }
   
