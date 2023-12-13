@@ -18,6 +18,7 @@ import FilteredCar from './FilteredCar';
 import UsedCar from './UsedCar';
 import NewCar from './NewCar';
 import AddReview from './AddReview';
+import InspectionList from './userinspections';
 
 function App() {
 
@@ -50,6 +51,8 @@ function App() {
           <Route path="/UsedCar" element={<UsedCar/>}/>
           <Route path="/NewCar" element={<NewCar/>}/>
           <Route path="/AddReview" element={<AddReview/>}/>
+          <Route path="/InspectionList" element={<InspectionList/>}/>
+
         </Routes>
       </div>
     </Router>
