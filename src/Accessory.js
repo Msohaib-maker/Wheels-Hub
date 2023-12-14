@@ -27,7 +27,7 @@ function Accessory(props){
             {/* {Rating} */}
             <p class="text-style">{props.name}</p>
             <p class="text-style2">Rs. {props.price}</p>
-            <button class="custom-button">Add to cart</button>
+            <button class="custom-button">Buy Now</button>
         </div>
     );
 }
