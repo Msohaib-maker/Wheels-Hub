@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import CarSale from "./CarSale";
 import { getDatabase, ref, set, onValue } from "firebase/database";
-import { Link } from 'react-router-dom';
+
 
 function CarList(props) {
 

@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import CarSale from "./CarSale";
+import CarSale from "../CarSale";
 import { getDatabase, ref, set, onValue } from "firebase/database";
 import FilteredCar from "./FilteredCar";
 

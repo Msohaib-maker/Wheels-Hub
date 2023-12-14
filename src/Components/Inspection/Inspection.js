@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { getDatabase,ref, set } from "firebase/database";
 import { v4 as uuidv4 } from 'uuid';
 
-import './car_accessories.css';
+import './Inspection.css';
 import { useLocation } from 'react-router-dom';
 
 function Inspection(props) {

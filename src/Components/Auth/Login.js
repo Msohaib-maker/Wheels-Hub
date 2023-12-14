@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './Styledlogin.css';
 import { signInWithEmailAndPassword } from "firebase/auth";
-import { auth } from './firebase';
+import { auth } from '../../Firebase/firebase';
 import { Link, useNavigate } from 'react-router-dom';
 import { getDatabase, ref, onValue } from "firebase/database";
 

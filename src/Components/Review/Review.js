@@ -1,7 +1,7 @@
 import React, { useEffect,useState } from 'react';
 import './CarReviews.css'; // Import the CSS file for styling
 import { Link, useNavigate } from 'react-router-dom';
-import {auth} from './firebase';
+import {auth} from '../../Firebase/firebase';
 import { onAuthStateChanged  } from "firebase/auth";
 import { getDatabase, ref, onValue } from "firebase/database";
 

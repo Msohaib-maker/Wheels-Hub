@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import './StyledSignup.css';
-import {auth} from './firebase';
+import {auth} from '../../Firebase/firebase';
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { Link, useNavigate } from 'react-router-dom';
 import { getDatabase, ref, set } from "firebase/database";
