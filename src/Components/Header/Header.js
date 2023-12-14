@@ -38,10 +38,13 @@ function Header() {
     
     }
     else{
-        navigate('/Signup ')
+        navigate('/Login ')
     }
-        }
-        ;
+
+        };
+
+
+        
 
      return (
         <div>
@@ -98,15 +101,17 @@ function Header() {
                             <Link class="nav-link active" aria-current="page" to="/Login"> Login</Link>
                         </div>
                     }
-
-                    <Link
+                    {
+                        isLoggedIn &&
+                        <Link
                         className="nav-link active"
                         aria-current="page"
                         to="/UserInfo"
-                        
                     >
                         User Info
-                    </Link></div>
+                    </Link>
+                    }
+                    </div>
             </nav>
         </div>
     );
