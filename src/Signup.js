@@ -42,14 +42,14 @@ const SignupForm = () => {
               localStorage.setItem('person_email', email)
               localStorage.setItem('person_name', fullName)
               localStorage.setItem('zip_code', postalCode)
-          alert("Sign Up");
+          alert("Sign Up Successfully!");
           nav("/");
         });
       })
       .catch((error) => {
         const errorCode = error.code;
         const errorMessage = error.message;
-    
+        alert("Failed to Sign Up!!");
       });
 
   };

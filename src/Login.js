@@ -30,7 +30,7 @@ const LoginForm = () => {
               localStorage.setItem('person_email', data['person_email'])
               localStorage.setItem('person_name', data['person_name'])
               localStorage.setItem('zip_code', data['zip_code'])
-              alert("Success");
+              alert("Login Successfull!!");
               nav("/");
           });
           
@@ -38,6 +38,7 @@ const LoginForm = () => {
         .catch((error) => {
           const errorCode = error.code;
           const errorMessage = error.message;
+          alert("Failed to Login!!");
         });
     };
 
