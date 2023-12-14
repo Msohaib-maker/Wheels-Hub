@@ -68,8 +68,9 @@ function CarAccessories(props)
                     <p>Get the best car accessories</p>
                 </div>
             </div>
+            <br></br>
             <h2>Best Car Accessories</h2>
-
+             <br></br>
             <ul class="item-list">
                 {accessoryData}
             </ul>
