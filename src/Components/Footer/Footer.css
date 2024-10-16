@@ -1,7 +1,18 @@
-
-.duco{
+.duco {
     background-color: rgb(15, 14, 14);
     height: 200px;
-    text-align: center;
     width: 100%;
+    
+    /* Use Flexbox with column direction */
+    display: flex;
+    flex-direction: column;   /* Stack children vertically */
+    justify-content: flex-end; /* Align items to the bottom */
+    align-items: center;      /* Center horizontally */
+    padding: 20px;           /* Add padding */
+}
+
+.duco p {
+    color: white;            /* Change text color to white */
+    margin: 0;              /* Remove default margin */
+    margin-top: auto;       /* Push the paragraph to the bottom */
 }
