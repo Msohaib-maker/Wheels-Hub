@@ -2,11 +2,12 @@ import './MainPage.css';
 
 
 const images = [
-    './car2.jpeg',
-    './mercedes-benz-car.jpg',
-    './car1.jpeg',
-    './car2.jpeg',
-    './mercedes-benz-car.jpg',
+    {image:'./carmotor.png', text:'Car motor'},
+    {image:'./logo192.png', text:'React logo'},
+    {image:'./carmotor.png', text:'Car motor'},
+    {image:'./car2.jpeg', text:'Car motor'},
+    {image:'./car2.jpeg', text:'Car motor'}
+
     // Add more image paths here if needed
 ];
 
@@ -33,29 +34,26 @@ function MainPage(props) {
             
 
             <div class="container12">
-                {images.map((src, index) => {
+                {images.map((obj, index) => {
                     return (
                         <div className="child" key={index}>
-                            <img src={src} className='img-talk' alt={`Image ${index + 1}`} />
-                            <p>Car motor</p>
+                            <img src={obj.image} className='img-talk' alt={`Image ${index + 1}`} />
+                            <p className='not-main-text'>{obj.text}</p>
                         </div>
                     );
                 })}
             </div>
-
-            <br/><br/>
-            <center><h3><i>Buy Car Accessories</i></h3></center>
-            <br/><br/>
-            <img src="./cartyre1.jpg" class="backgroundimage_mp" alt="Background Image"></img>
-            <img src="./carmotor.jpeg" class="backgroundimage_mp" alt="Background Image"></img>
-            <img src="./battery.webp" class="backgroundimage_mp" alt="Background Image"></img>
-
-            <br/><br/>
-            <center><h3><i>Get Inspection of your car</i></h3></center>
-            <br/><br/>
-            <img src="./car-inspection.png" class="backgroundimage_mp" alt="Background Image"></img>
-            <img src="./car-inspection1.png" class="backgroundimage_mp" alt="Background Image"></img>
-            <img src="./car-inspection2.avif" class="backgroundimage_mp" alt="Background Image"></img>
+            <br></br>
+            <div class="container12">
+                {images.map((obj, index) => {
+                    return (
+                        <div className="child" key={index}>
+                            <img src={obj.image} className='img-talk' alt={`Image ${index + 1}`} />
+                            <p className='not-main-text'>{obj.text}</p>
+                        </div>
+                    );
+                })}
+            </div>
 
             
         </div>

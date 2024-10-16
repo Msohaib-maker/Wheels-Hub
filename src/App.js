@@ -56,8 +56,8 @@ function App() {
         </Routes>
       </div>
     </Router>
-    <br/><br/>
     <Footer/>
+    
     </>
    
   );
