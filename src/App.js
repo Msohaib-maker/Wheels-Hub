@@ -1,23 +1,24 @@
-import logo from './logo.svg';
+//import logo from './logo.svg';
 import './App.css';
-import Accessories from './car_accessories';
-import Inspection from './Inspection';
+//import Accessories from './Components/Accessories/car_accessories';
+import Inspection from './Components//Inspection/Inspection';
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import CarAccessories from './car_accessories';
-import CarSale from './CarSale';
-import Footer from './Footer';
-import Header from './Header';
-import LoginForm from './Login';
-import SignupForm from './Signup';
-import UserProfile from './UserProfile';
-import Reviews from './Review';
-import UploadCar from './UploadCar';
-import CarList from './CarList';
-import MainPage from './MainPage';
-import FilteredCar from './FilteredCar';
-import UsedCar from './UsedCar';
-import NewCar from './NewCar';
-import AddReview from './AddReview';
+import CarAccessories from './Components/Accessories/car_accessories';
+//import CarSale from './CarSale';
+import Footer from './Components/Footer/Footer';
+import Header from './Components/Header/Header';
+import LoginForm from './Components/Auth/Login';
+import SignupForm from './Components/Auth/Signup';
+import UserProfile from './Components/User/UserProfile';
+import Reviews from './Components/Review/Review';
+import UploadCar from './Components/Car/Upload/UploadCar';
+import CarList from './Components/Car/CarList';
+import MainPage from './Components/Starter/MainPage';
+import FilteredCar from './Components/Car/Filtered Car/FilteredCar';
+import UsedCar from './Components/Car/Filtered Car/UsedCar';
+import NewCar from './Components/Car/Filtered Car/NewCar';
+import AddReview from './Components/Review/AddReview';
+import InspectionList from './Components/Inspection/userinspections';
 
 function App() {
 
@@ -50,6 +51,8 @@ function App() {
           <Route path="/UsedCar" element={<UsedCar/>}/>
           <Route path="/NewCar" element={<NewCar/>}/>
           <Route path="/AddReview" element={<AddReview/>}/>
+          <Route path="/InspectionList" element={<InspectionList/>}/>
+
         </Routes>
       </div>
     </Router>

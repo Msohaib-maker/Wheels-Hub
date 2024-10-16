@@ -53,6 +53,14 @@ function AddReview(props){
 
     return(
         <div>
+                 <div class="container">
+                <img src="./car.jpg" class="background-image" alt="Background Image"></img>
+                <div class="overlay-text">
+                    <h2>Welcome to ApnaWheels by Car Tech</h2>
+                    <p>Get the best car accessories</p>
+                </div>
+            </div>
+            <br></br>
             <form onSubmit={handleSubmit} className='form-style'>
                 <h2>Review from {localStorage.getItem('person_name')}</h2>
                 <input type="text" className="form-control" id="comment" placeholder="Enter Comment" onChange={handleInputChange} value={ReviewData.comment} />

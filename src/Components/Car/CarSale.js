@@ -1,6 +1,6 @@
 
 import './CarSale.css'
-import UploadCar from './UploadCar';
+import UploadCar from './Upload/UploadCar';
 import { useState, useEffect } from "react";
 
 function CarSale(props){

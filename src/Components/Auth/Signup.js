@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import './StyledSignup.css';
-import {auth} from './firebase';
+import {auth} from '../../Firebase/firebase';
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { Link, useNavigate } from 'react-router-dom';
 import { getDatabase, ref, set } from "firebase/database";
@@ -42,14 +42,14 @@ const SignupForm = () => {
               localStorage.setItem('person_email', email)
               localStorage.setItem('person_name', fullName)
               localStorage.setItem('zip_code', postalCode)
-          alert("Sign Up");
+          alert("Sign Up Successfully!");
           nav("/");
         });
       })
       .catch((error) => {
         const errorCode = error.code;
         const errorMessage = error.message;
-        alert("Already registered")
+        alert("Failed to Sign Up!!");
       });
 
   };

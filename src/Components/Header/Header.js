@@ -1,8 +1,8 @@
 import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import './Header.css'
-import {auth} from './firebase';
-import { signOut, onAuthStateChanged  } from "firebase/auth";
+import { auth } from '../../Firebase/firebase';
+import { signOut, onAuthStateChanged } from "firebase/auth";
 import { useState, useEffect } from "react";
 
 function Header() {
@@ -10,18 +10,18 @@ function Header() {
 
     const [isLoggedIn, setIsLoggedIn] = useState(false);
 
-  useEffect(() => {
-    const unsubscribe = auth.onAuthStateChanged((user) => {
-      if (user) {
-        
-        setIsLoggedIn(true);
-      } else {
-        setIsLoggedIn(false);
-      }
-    });
+    useEffect(() => {
+        const unsubscribe = auth.onAuthStateChanged((user) => {
+            if (user) {
 
-    return () => unsubscribe();
-  }, []);
+                setIsLoggedIn(true);
+            } else {
+                setIsLoggedIn(false);
+            }
+        });
+
+        return () => unsubscribe();
+    }, []);
 
     const handleSignOut = () => {
         signOut(auth).then(() => {
@@ -33,18 +33,20 @@ function Header() {
 
 
     const handleClick = () => {
-        navigate('/UserInfo', {
-            state: {
-                fullName: 'John Doe',
-                email: 'john.doe@example.com',
-                password: '123',
-                streetAddress: '123',
-                city: 'Lahore',
-                country: 'pak',
-                postalCode: '123',
-            },
-        });
-    }; return (
+        if(isLoggedIn){
+        navigate('/Inspect' )   
+    
+    }
+    else{
+        navigate('/Login ')
+    }
+
+        };
+
+
+        
+
+     return (
         <div>
             <nav class="navbar navbar-expand-lg custom-navbar">
                 <div class="container-fluid">
@@ -73,7 +75,10 @@ function Header() {
                                 <Link class="nav-link active" aria-current="page" to="/Review">Review</Link>
                             </li>
                             <li class="nav-item">
-                                <Link class="nav-link active" aria-current="page" to="/Inspect">Inspection</Link>
+                                <Link class="nav-link active" aria-current="page" to="/Inspect" onClick={(e) => {
+                                    e.preventDefault();
+                                    handleClick();
+                                }}>Inspection</Link>
                             </li>
                             <li class="nav-item">
                                 <Link class="nav-link active" aria-current="page" to="/UploadCar">Post a Car</Link>
@@ -89,27 +94,27 @@ function Header() {
                         </form> */}
 
                     {
-                        isLoggedIn && 
+                        isLoggedIn &&
                         <Link class="nav-link active" aria-current="page" onClick={handleSignOut}> Logout</Link>
                     }
                     {
-                        !isLoggedIn && 
+                        !isLoggedIn &&
                         <div class="row">
-                                <Link class="nav-link active" aria-current="page" to="/Signup"> SignUp</Link>
-                                <Link class="nav-link active" aria-current="page" to="/Login"> Login</Link>
+                            <Link class="nav-link active" aria-current="page" to="/Signup"> SignUp</Link>
+                            <Link class="nav-link active" aria-current="page" to="/Login"> Login</Link>
                         </div>
                     }
-                    
-                    <Link
+                    {
+                        isLoggedIn &&
+                        <Link
                         className="nav-link active"
                         aria-current="page"
                         to="/UserInfo"
-                        onClick={(e) => {
-                            e.preventDefault(); 
-                            handleClick();     }}
                     >
                         User Info
-                    </Link></div>
+                    </Link>
+                    }
+                    </div>
             </nav>
         </div>
     );

@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import CarSale from "./CarSale";
 import { getDatabase, ref, set, onValue } from "firebase/database";
-import { Link } from 'react-router-dom';
+
 
 function CarList(props) {
 
@@ -70,7 +70,14 @@ function CarList(props) {
 
     return (
         <>
-           
+                    <div class="container">
+                <img src="./car.jpg" class="background-image" alt="Background Image"></img>
+                <div class="overlay-text">
+                    <h2>Welcome to ApnaWheels by Car Tech</h2>
+                    <p>Get the best car accessories</p>
+                </div>
+            </div>
+            <br></br>
             <br /><br />
             <div>
 

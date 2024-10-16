@@ -1,7 +1,7 @@
 import React, { useEffect,useState } from 'react';
 import './CarReviews.css'; // Import the CSS file for styling
 import { Link, useNavigate } from 'react-router-dom';
-import {auth} from './firebase';
+import {auth} from '../../Firebase/firebase';
 import { onAuthStateChanged  } from "firebase/auth";
 import { getDatabase, ref, onValue } from "firebase/database";
 
@@ -89,6 +89,14 @@ const Reviews = () => {
 
   return (
     <div>
+             <div class="container">
+                <img src="./car.jpg" class="background-image" alt="Background Image"></img>
+                <div class="overlay-text">
+                    <h2>Welcome to ApnaWheels by Car Tech</h2>
+                    <p>Get the best car accessories</p>
+                </div>
+            </div>
+            <br></br>
       {isDisabled &&
         <Link className="nav-link active" aria-current="page" to="/AddReview">
         <button className="button-styling">Add your review</button>

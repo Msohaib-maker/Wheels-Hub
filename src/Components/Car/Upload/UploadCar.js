@@ -3,7 +3,7 @@ import { getDatabase, ref, set } from 'firebase/database';
 import { v4 as uuidv4 } from 'uuid';
 import './UploadCar.css'
 import { initializeApp } from "firebase/app";
-import { storage } from './firebase';
+import { storage } from '../../../Firebase/firebase';
 import { getDownloadURL, ref as storageRef, uploadBytes} from 'firebase/storage'
 
 
