@@ -14,3 +14,14 @@
     text-decoration: none; /* Optional: Remove underline */
     color: black; /* Default color for the "Tech" part */
   }
+
+
+  .nav-link {
+    color: white; /* Default color for links */
+    text-decoration: none;
+    transition: color 0.3s ease; /* Smooth transition for color change */
+  }
+  
+  .nav-link:hover {
+    color: blue; /* Change to blue when hovered */
+  }

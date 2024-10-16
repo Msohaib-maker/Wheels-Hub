@@ -21,9 +21,10 @@ function MainPage(props) {
         <div>
             
             <div className='container_MP'>
-                {/* <img src="./car.jpg" class="background-image" alt="Background Image"></img> */}
+                <img src="./car-wheel.png" class="backgroundimage_mp " alt="Background Image"></img>
                 <div class="overlay-text">
-                <h2>Welcome to ApnaWheels by Car Tech</h2>
+                    <h2>Welcome to ApnaWheels</h2>
+                    <h3 className='text-color'>Sponsered by CarTech</h3>
                 </div>
             </div>
             <br/><br/>

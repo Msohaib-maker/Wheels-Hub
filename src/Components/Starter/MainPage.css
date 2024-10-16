@@ -2,7 +2,7 @@
     position: relative;
     width: 100%;
     margin: 0 auto; /* Center the container horizontally */
-    background-color: rgb(28, 27, 27);
+    background-color: rgba(28, 27, 27, 0.7);
     height: 300px;
     /* Adjust other styles as needed */
   }
@@ -18,9 +18,10 @@
 
   .backgroundimage_mp {
     display: inline-block;
-    width: 410px; /* Set a specific width for all images */
-    height: 200px;
-    margin: 15px; /* Adjust spacing between images */
+    width: 250px; /* Set a specific width for all images */
+    height: 250px;
+    margin-left: 90px; /* Adjust spacing between images */
+    margin-top: 20px;
 }
 
 .image-slider {
@@ -28,4 +29,9 @@
   overflow-x: auto;
   white-space: nowrap;
   scroll-behavior: smooth; /* Optional: Makes scrolling smooth */
+}
+
+
+.text-color{
+  color: orange;
 }
