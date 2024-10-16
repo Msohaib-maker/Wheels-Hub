@@ -1,9 +1,9 @@
 .container_MP {
     position: relative;
     width: 100%;
-    max-width: 1368px; /* Set a maximum width if needed */
     margin: 0 auto; /* Center the container horizontally */
-    background-color: black;
+    background-color: rgb(28, 27, 27);
+    height: 300px;
     /* Adjust other styles as needed */
   }
 
@@ -21,4 +21,11 @@
     width: 410px; /* Set a specific width for all images */
     height: 200px;
     margin: 15px; /* Adjust spacing between images */
+}
+
+.image-slider {
+  display: flex;
+  overflow-x: auto;
+  white-space: nowrap;
+  scroll-behavior: smooth; /* Optional: Makes scrolling smooth */
 }

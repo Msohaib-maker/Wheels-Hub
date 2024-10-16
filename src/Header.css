@@ -3,3 +3,14 @@
     /* You can also use 'black' as a color name */
     /* Adjust other styles as needed */
   }
+
+  .car-highlight {
+    color: orange; /* Make the "Car" part orange */
+    font-weight: bold; /* Optional: Make it bold */
+  }
+
+  .navbar-brand {
+    font-size: 44px; /* Increase font size for the whole text */
+    text-decoration: none; /* Optional: Remove underline */
+    color: black; /* Default color for the "Tech" part */
+  }

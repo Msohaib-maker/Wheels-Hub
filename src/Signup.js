@@ -49,7 +49,7 @@ const SignupForm = () => {
       .catch((error) => {
         const errorCode = error.code;
         const errorMessage = error.message;
-    
+        alert("Already registered")
       });
 
   };

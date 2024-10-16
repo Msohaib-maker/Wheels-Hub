@@ -48,7 +48,10 @@ function Header() {
         <div>
             <nav class="navbar navbar-expand-lg custom-navbar">
                 <div class="container-fluid">
-                    <Link class="navbar-brand" to="/">CarTech</Link>
+                    {/* <Link class="navbar-brand" to="/">CarTech</Link> */}
+                    <Link className="navbar-brand" to="/">
+                        <span className="car-highlight">CarTech</span>
+                    </Link>
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                     </button>
