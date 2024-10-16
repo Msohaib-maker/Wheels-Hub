@@ -1,6 +1,6 @@
 .container_MP {
     position: relative;
-    width: 100%;
+    width: 100vw;
     margin: 0 auto; /* Center the container horizontally */
     background-color: rgba(28, 27, 27, 0.7);
     height: 300px;
@@ -16,22 +16,85 @@
     color: white;
   }
 
+  .overlay-button{
+    position: absolute;
+    top: 80%;
+    left: 70%;
+    transform: translate(-50%, -50%);
+    
+  }
+
+  .button-style{
+    background-color: orange;
+    color: black;
+    font-weight: 600;
+    min-width: 250px;
+  }
+
   .backgroundimage_mp {
     display: inline-block;
     width: 250px; /* Set a specific width for all images */
     height: 250px;
     margin-left: 90px; /* Adjust spacing between images */
     margin-top: 20px;
-}
+    
+  }
+
+  .lead_backgroundimage{
+    position: absolute;
+    top: 50%;
+    left: 20%;
+    transform: translate(-50%,-50%);
+    width: 250px;
+    height: 250px;
+  }
 
 .image-slider {
   display: flex;
   overflow-x: auto;
   white-space: nowrap;
   scroll-behavior: smooth; /* Optional: Makes scrolling smooth */
+  background-color: aqua;
 }
 
 
 .text-color{
   color: orange;
+}
+
+.main-text{
+  color: white;
+  font-size: 30px;
+  margin-left: 50px;
+}
+
+.container12{
+  background-color: aqua;
+  width: 100vw;
+  display: flex;
+  flex-direction: row; 
+  justify-content: space-evenly;
+  padding-top: 8px;
+  padding-bottom: 8px;
+}
+
+.child {
+  background-color: rgb(29, 29, 29);
+  width: 200px;
+  height: 200px;
+  border-width: 1px;
+  border-color: rgb(39, 39, 39);
+  border-style: solid;
+  padding-left: 5px;
+  padding-right: 5px;
+  padding-top: 5px;
+  text-align: center;
+}
+
+.img-talk{
+  
+  background-color: rgb(63, 124, 124);
+  max-height: 140px;
+  max-width: 100%;
+  
 }
