@@ -5,8 +5,8 @@ const images = [
     {image:'./carmotor.png', text:'Car motor'},
     {image:'./logo192.png', text:'React logo'},
     {image:'./carmotor.png', text:'Car motor'},
-    {image:'./carbrakes.png', text:'Car motor'},
-    {image:'./carmotor.png', text:'Car motor'}
+    {image:'./carbrakes.png', text:'Car brakes'},
+    {image:'./car_engine.png', text:'Car engine'}
 
     // Add more image paths here if needed
 ];
