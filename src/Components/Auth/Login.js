@@ -1,48 +1,32 @@
 import React, { useState } from 'react';
 import './Styledlogin.css';
-import { signInWithEmailAndPassword } from "firebase/auth";
-import { auth } from '../../Firebase/firebase';
-import { Link, useNavigate } from 'react-router-dom';
-import { getDatabase, ref, onValue } from "firebase/database";
+import { useDispatch, useSelector } from 'react-redux';
+import { loginUser } from '../../reducers/authSlice';
+import { useNavigate } from 'react-router-dom';
 
 const LoginForm = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
-
+  const dispatch = useDispatch();
   const nav = useNavigate();
-  const db = getDatabase();
 
+  // Accessing the auth state from the Redux store
+  const authState = useSelector((state) => state.auth);
+  
   const handleLogin = (e) => {
     e.preventDefault();
-    signInWithEmailAndPassword(auth, username, password)
-        .then((userCredential) => {
-          // Signed in 
-          const user = userCredential.user;
-          const starCountRef = ref(db, 'users/' + user.uid);
-          onValue(starCountRef, (snapshot) => {
-              const data = snapshot.val();
-
-
-              // Cache data locally
-              localStorage.setItem('City', data['City'])
-              localStorage.setItem('Country', data['Country'])
-              localStorage.setItem('address', data['address'])
-              localStorage.setItem('person_email', data['person_email'])
-              localStorage.setItem('person_name', data['person_name'])
-              localStorage.setItem('zip_code', data['zip_code'])
-              alert("Login Successfull!!");
-              nav("/");
-          });
-          
-        })
-        .catch((error) => {
-          const errorCode = error.code;
-          const errorMessage = error.message;
-          alert("Failed to Login!!");
-        });
-    };
-
-
+    
+    // Dispatch the loginUser action
+    dispatch(loginUser({ username, password }))
+      .unwrap()  // Unwrap the promise to handle success or error
+      .then(() => {
+        alert("Login Successful!");
+        nav("/"); // Navigate to home page on successful login
+      })
+      .catch((error) => {
+        alert("Failed to Login! " + error); // Show error if login fails
+      });
+  };
 
   return (
     <div className="login-container">
@@ -65,8 +49,12 @@ const LoginForm = () => {
               onChange={(e) => setPassword(e.target.value)}
             />
           </label>
-          <button type="submit">Login</button>
+          <button type="submit" disabled={authState.status === 'loading'}>
+            {authState.status === 'loading' ? 'Logging in...' : 'Login'}
+          </button>
         </form>
+
+        {authState.error && <p className="error">{authState.error}</p>}
       </div>
     </div>
   );

@@ -6,6 +6,6 @@ const store = configureStore({
     devTools: process.env.NODE_ENV !== 'production', // Enable Redux DevTools in development
 });
 
-
+console.log(store.getState())
 
 export default store;

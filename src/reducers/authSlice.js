@@ -1,7 +1,7 @@
 // src/reducers/authSlice.js
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import { signInWithEmailAndPassword } from "firebase/auth";
-import { auth } from '../../Firebase/firebase';
+import { auth } from '../Firebase/firebase';
 import { getDatabase, ref, onValue } from "firebase/database";
 
 // Thunk to handle login
