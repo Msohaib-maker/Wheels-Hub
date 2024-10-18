@@ -10,11 +10,10 @@ function CarAccessories() {
   
   // Get state from Redux store
   const accessoriesList = useSelector((state) => state.accessories.accessoriesList);
-  const status = useSelector(state => state.accessories.status);
-  const error = useSelector(state => state.accessories.error);
+  const status = useSelector((state) => state.accessories.status);
+  const error = useSelector((state) => state.accessories.error);
 
-
-  console.log(accessoriesList);
+  
   // Dummy backend Data
   let SpareParts = [
     { image: "./car_tyre.jpg" },
@@ -60,10 +59,11 @@ function CarAccessories() {
       </div> */}
     
       <h2>Best Car Accessories</h2>
-      
+      <br></br>
       <ul class="item-list">
         {content}
       </ul>
+      <br></br>
     </div>
   );
 }
