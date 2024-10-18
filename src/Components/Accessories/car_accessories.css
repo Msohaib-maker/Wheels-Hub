@@ -1,9 +1,5 @@
 
 .container {
-  position: relative;
-  width: 100%;
-  max-width: 1368px; /* Set a maximum width if needed */
-  margin: 0 auto; /* Center the container horizontally */
   background-color: black;
   /* Adjust other styles as needed */
 }

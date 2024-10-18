@@ -1,84 +1,71 @@
-import { useState, Component } from "react"
-import './car_accessories.css';
+import { useEffect } from "react";
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchAccessories } from "../../reducers/car_accessory_reducer"; // Import the thunk
 import Accessory from "./Accessory";
-import { onValue, getDatabase, ref } from "firebase/database";
+import './car_accessories.css';
 
-function CarAccessories(props)
-{
-
-    const [AccessoriesData, setAccessoriesData] = useState({
-        AccessoriesDataList: []
-    })
-
-    // Dummy backend Data
-    let SpareParts = [
-        {image: "./car_tyre.jpg"},
-        {image: "./car_motor.jpg"},
-        {image: "./battery.webp"},
-        {image: "./rims.jpg"},
-        {image: "./car_battery.jpg"},
-        {image: "./carmotor.jpeg"}
-    ]
-
-    const db = getDatabase();
-    const CarAccessoryRef = ref(db, 'accessory/');
-
-    let accessoryData = []
+function CarAccessories() {
+  
+  const dispatch = useDispatch();
+  
+  // Get state from Redux store
+  const accessoriesList = useSelector((state) => state.accessories.accessoriesList);
+  const status = useSelector(state => state.accessories.status);
+  const error = useSelector(state => state.accessories.error);
 
 
-    // Reading from firebase
-    onValue(CarAccessoryRef, (snapshot) => {
-        const data = snapshot.val()
+  console.log(accessoriesList);
+  // Dummy backend Data
+  let SpareParts = [
+    { image: "./car_tyre.jpg" },
+    { image: "./car_motor.jpg" },
+    { image: "./battery.webp" },
+    { image: "./rims.jpg" },
+    { image: "./car_battery.jpg" },
+    { image: "./carmotor.jpeg" }
+  ];
 
-        if(data){
-            const dataArray = Object.values(data);
-            accessoryData = dataArray.map((ele, i) => (
-                
-                <Accessory
-                    image={SpareParts[i].image} // Add a unique key prop
-                    name={ele.name}
-                    price={ele.price}
-                />
-            ));
+  useEffect(() => {
+    if (status === 'idle') {
+      dispatch(fetchAccessories()); // Fetch data on component mount
+    }
+  }, [status, dispatch]);
 
-            if(AccessoriesData.AccessoriesDataList.length !== accessoryData.length){
-                setAccessoriesData({
-                    AccessoriesDataList: accessoryData
-                })
-            }
-        }
+  // Display loading, error or accessory data
+  let content;
 
-    });
+  if (status === 'loading') {
+    content = <p>Loading...</p>;
+  } else if (status === 'succeeded') {
+    content = accessoriesList.map((ele, i) => (
+      <Accessory
+        key={i} // Add unique key
+        image={SpareParts[i] ? SpareParts[i].image : "./default_image.jpg"} // Backup image
+        name={ele.name}
+        price={ele.price}
+      />
+    ));
+  } else if (status === 'failed') {
+    content = <p>Error: {error}</p>;
+  }
 
-
-
-
-    const MapArr = SpareParts.map((ele) => {
-        return <Accessory image={ele.image} name={ele.name} price={ele.price}/>
-    })
-
-
-
-    return(
-        <div>
-            <div class="container">
-                <img src="./car.jpg" class="background-image" alt="Background Image"></img>
-                <div class="overlay-text">
-                    <h2>Welcome to ApnaWheels by Car Tech</h2>
-                    <p>Get the best car accessories</p>
-                </div>
-            </div>
-            <br></br>
-            <h2>Best Car Accessories</h2>
-             <br></br>
-            <ul class="item-list">
-                {accessoryData}
-            </ul>
-
-            
-            
+  return (
+    <div>
+      {/* <div class="container">
+        <img src="./car.jpg" class="background-image" alt="Background Image" />
+        <div class="overlay-text">
+          <h2>Welcome to ApnaWheels by Car Tech</h2>
+          <p>Get the best car accessories</p>
         </div>
-    );
+      </div> */}
+    
+      <h2>Best Car Accessories</h2>
+      
+      <ul class="item-list">
+        {content}
+      </ul>
+    </div>
+  );
 }
 
 export default CarAccessories;

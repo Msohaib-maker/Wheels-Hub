@@ -25,7 +25,7 @@ function App() {
   return (
     <>
      <Router>
-      <div className='cuto'>
+      <div>
         {/* Navigation links */}
         {/* <nav>
           <ul>
