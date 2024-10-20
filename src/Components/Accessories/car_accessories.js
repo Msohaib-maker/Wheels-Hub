@@ -16,12 +16,12 @@ function CarAccessories() {
   
   // Dummy backend Data
   let SpareParts = [
-    { image: "./car_tyre.jpg" },
-    { image: "./car_motor.jpg" },
-    { image: "./battery.webp" },
-    { image: "./rims.jpg" },
-    { image: "./car_battery.jpg" },
-    { image: "./carmotor.jpeg" }
+    { image: "./carbrakes.png" },
+    { image: "./carmotor.png" },
+    { image: "./carbrakes.png" },
+    { image: "./logo192.png" },
+    { image: "./car_engine.png" },
+    { image: "./carbrakes.png" }
   ];
 
   useEffect(() => {
@@ -58,7 +58,12 @@ function CarAccessories() {
         </div>
       </div> */}
     
-      <h2>Best Car Accessories</h2>
+      <h2 className="h2-style">Best Car Accessories</h2>
+      <br></br>
+      <ul class="item-list">
+        {content}
+      </ul>
+      <br></br>
       <br></br>
       <ul class="item-list">
         {content}

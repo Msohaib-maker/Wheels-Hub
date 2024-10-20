@@ -1,98 +1,53 @@
-import { useState, useEffect } from "react";
+import React, { useEffect } from "react";
+import { useSelector, useDispatch } from 'react-redux';
+import { fetchCars } from '../../reducers/carListSlice';
 import CarSale from "./CarSale";
-import { getDatabase, ref, set, onValue } from "firebase/database";
 
+function CarList() {
+  const dispatch = useDispatch();
+  const { carsList, status, error } = useSelector((state) => state.carList);
 
-function CarList(props) {
+  useEffect(() => {
+    if (status === 'idle') {
+      dispatch(fetchCars());
+    }
+  }, [status, dispatch]);
 
-    const [CarsData, setCarsData] = useState({
-        CarsList: []
-    })
-
-    let cars = []
-    const db = getDatabase();
-    const CarListRef = ref(db, 'cars/');
-
-    onValue(CarListRef, (snapshot) => {
-        const data = snapshot.val();
-
-        if (data == null) {
-            console.log("yes data null")
-        }
-
-        if (data) {
-            const dataArray = Object.values(data);
-            if (dataArray == null) {
-                console.log("yes dataArray null")
-            }
-
-            cars = dataArray.map((ele) => (
-                <CarSale
-                    key={ele.carId} // Add a unique key prop
-                    name={ele.carModel}
-                    price={ele.price}
-                    city={ele.city}
-                    specs={ele.mileage}
-                    cc={ele.engine}
-                    year={ele.year}
-                    type={ele.type}
-                    image={ele.file.file_remote}
-                    info="Updated by Car Tech"
-                    phoneNo={ele.contact}
-                />
-            ));
-
-
-            // let isUpdate = false;
-            if (cars == null) {
-                console.log("yes cars null")
-            }
-            if (CarsData.CarsList == null) {
-                console.log("yes CarsList null")
-            }
-            if (CarsData.CarsList != null && cars != null) {
-                let k = cars.length;
-                let j = CarsData.CarsList.length;
-                console.log(k + " " + j)
-                if (k != j) {
-                    setCarsData({ CarsList: cars });
-                }
-            }
-
-
-            // setCarsData({ carList: cars });
-        } else {
-            console.log("No data available");
-        }
-    });
-
-
-
-    return (
-        <>
-                    <div class="container">
-                <img src="./car.jpg" class="background-image" alt="Background Image"></img>
-                <div class="overlay-text">
-                    <h2>Welcome to ApnaWheels by Car Tech</h2>
-                    <p>Get the best car accessories</p>
-                </div>
-            </div>
-            <br></br>
-            <br /><br />
-            <div>
-
-                <div>
-                    <h1><center><i>Car List - Used / New</i></center></h1>
-                </div>
-                <br /><br />
-                <ol>
-                    {cars}
-                </ol>
-            </div>
-        </>
-    );
-
+  return (
+    <>
+      <div className="container">
+        <img src="./car.jpg" className="background-image" alt="Background Image" />
+        <div className="overlay-text">
+          <h2>Welcome to ApnaWheels by Car Tech</h2>
+          <p>Get the best car accessories</p>
+        </div>
+      </div>
+      <br />
+      <div>
+        <h1><center><i>Car List - Used / New</i></center></h1>
+      </div>
+      <br />
+      <ol>
+        {status === 'loading' && <p>Loading...</p>}
+        {status === 'failed' && <p>{error}</p>}
+        {carsList.map((car) => (
+          <CarSale
+            key={car.carId} // Unique key prop
+            name={car.carModel}
+            price={car.price}
+            city={car.city}
+            specs={car.mileage}
+            cc={car.engine}
+            year={car.year}
+            type={car.type}
+            image={car.file.file_remote}
+            info="Updated by Car Tech"
+            phoneNo={car.contact}
+          />
+        ))}
+      </ol>
+    </>
+  );
 }
-
 
 export default CarList;
