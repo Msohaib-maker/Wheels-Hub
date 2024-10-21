@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './StyledUserProfile.css';
 import { useDispatch, useSelector } from 'react-redux';
-import { updateProfile } from '../../store/userProfileSlice'; // Adjust the import path
+import { updateProfile } from '../../reducers/userProfileSlice'; // Adjust the import path
 
 const UserProfile = () => {
   const dispatch = useDispatch();
