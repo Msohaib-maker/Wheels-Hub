@@ -1,25 +1,26 @@
 import React, { useState } from 'react';
 import './StyledUserProfile.css';
+import { useDispatch, useSelector } from 'react-redux';
+import { updateProfile } from '../../store/userProfileSlice'; // Adjust the import path
 
 const UserProfile = () => {
+  const dispatch = useDispatch();
 
-
-
-  const [fullName, setFullName] = useState(localStorage.getItem('person_name')
-    || '');
-  const [email, setEmail] = useState(localStorage.getItem('person_email')
-    || '');
-  const [streetAddress, setStreetAddress] = useState(localStorage.getItem('address') || '');
-  const [city, setCity] = useState(localStorage.getItem('City') || '');
-  const [country, setCountry] = useState(localStorage.getItem('Country') || '');
-  const [postalCode, setPostalCode] = useState(localStorage.getItem('zip_code')
-    || '');
+  const userProfile = useSelector((state) => state.userProfile);
   const [editing, setEditing] = useState(false);
+  const [fullName, setFullName] = useState(userProfile.fullName);
+  const [email, setEmail] = useState(userProfile.email);
+  const [streetAddress, setStreetAddress] = useState(userProfile.streetAddress);
+  const [city, setCity] = useState(userProfile.city);
+  const [country, setCountry] = useState(userProfile.country);
+  const [postalCode, setPostalCode] = useState(userProfile.postalCode);
+
   const handleUpdateProfile = (e) => {
     e.preventDefault();
-    console.log('Profile Updated!');
+    dispatch(updateProfile({ fullName, email, streetAddress, city, country, postalCode }));
     setEditing(false);
   };
+
   const handleEditClick = () => {
     setEditing(true);
   };
@@ -37,7 +38,8 @@ const UserProfile = () => {
                 value={fullName}
                 onChange={(e) => setFullName(e.target.value)}
               />
-            </label>  <p>
+            </label>
+            <p>
               <strong>Email:</strong> {email}
             </p>
             <label>
@@ -83,7 +85,7 @@ const UserProfile = () => {
               <strong>Email:</strong> {email}
             </p>
             <p>
-              <strong>streetAddress:</strong> {streetAddress}
+              <strong>Street Address:</strong> {streetAddress}
             </p>
             <p>
               <strong>City:</strong> {city}
@@ -92,13 +94,11 @@ const UserProfile = () => {
               <strong>Country:</strong> {country}
             </p>
             <p>
-              <strong>PostalCode:</strong> {postalCode}
+              <strong>Postal Code:</strong> {postalCode}
             </p>
-            {/* Include other details */}
             <button onClick={handleEditClick}>Edit Profile</button>
           </div>
         )}
-
       </div>
     </div>
   );
