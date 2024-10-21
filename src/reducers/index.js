@@ -5,7 +5,8 @@ import carSaleReducer from './carsaleSlice';
 import carListReducer from './carListSlice';
 import UploadCarReducer from './UploadCarSlice';
 import UsedCarReducer from './UsedCarSlice';
-
+import InspectionReducer from './InspectionSlice';
+import ReviewReducer from './reviewSlice'
 
 const rootReducer = combineReducers({
     accessories: CarAccessoryReducer,
@@ -13,7 +14,9 @@ const rootReducer = combineReducers({
     carSale:carSaleReducer,
     carList:carListReducer,
     uploadCar: UploadCarReducer,
-    UsedCar: UsedCarReducer
+    UsedCar: UsedCarReducer,
+    InspectReducer: InspectionReducer,
+    reviewReducer: ReviewReducer
 });
 
 export default rootReducer;

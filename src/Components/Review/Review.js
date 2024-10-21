@@ -1,10 +1,11 @@
-import React, { useEffect,useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './CarReviews.css'; // Import the CSS file for styling
 import { Link, useNavigate } from 'react-router-dom';
-import {auth} from '../../Firebase/firebase';
-import { onAuthStateChanged  } from "firebase/auth";
-import { getDatabase, ref, onValue } from "firebase/database";
-
+import { auth } from '../../Firebase/firebase';
+import { onAuthStateChanged } from 'firebase/auth';
+import { getDatabase, ref, onValue } from 'firebase/database';
+import { useDispatch, useSelector } from 'react-redux';
+import { setReviews } from '../../reducers/reviewSlice'; // Adjust the import path
 
 const Review = ({ review }) => {
   return (
@@ -17,12 +18,13 @@ const Review = ({ review }) => {
 };
 
 const Reviews = () => {
-
   const [isDisabled, setIsDisabled] = useState(false);
-  const [Uid, setUid] = useState('');
-  
+  const [uid, setUid] = useState('');
+
   const db = getDatabase();
   const nav = useNavigate();
+  const dispatch = useDispatch();
+  const reviews = useSelector((state) => state.reviews.reviews);
 
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged((user) => {
@@ -38,82 +40,41 @@ const Reviews = () => {
     return () => unsubscribe();
   }, []);
 
-
-  const initialReviews = [
-    {
-      userName: 'Muhammad Jareer',
-      comment: 'Excellent condition. Loved the experience!',
-      rating: 4.5,
-    },
-    {
-      userName: 'Jane Smith',
-      comment: 'Great Car. Smooth transaction. Would buy again!',
-      rating: 4,
-    },
-    // Add more reviews as needed
-  ];
-
-
-
-
-
-  const [reviews, setReviews] = useState([]);
-
-  const starCountRef = ref(db, 'reviews/');
-  onValue(starCountRef, (snapshot) => {
+  useEffect(() => {
+    const starCountRef = ref(db, 'reviews/');
+    onValue(starCountRef, (snapshot) => {
       const data = snapshot.val();
-      
-
-      if(data){
+      if (data) {
         const dataArray = Object.values(data);
-
-        const revs = dataArray.map((ele, index) =>{
-          return <Review key={index} review={ele} />
-        })
-
-        if(reviews.length != dataArray.length){
-          setReviews(revs);
-        }
-
+        dispatch(setReviews(dataArray)); // Dispatch the reviews to the store
       }
-      else{
-
-      }
-              
-  });
-  
-
-  
-
-
+    });
+  }, [dispatch]);
 
   return (
     <div>
-             <div class="container">
-                <img src="./car.jpg" class="background-image" alt="Background Image"></img>
-                <div class="overlay-text">
-                    <h2>Welcome to ApnaWheels by Car Tech</h2>
-                    <p>Get the best car accessories</p>
-                </div>
-            </div>
-            <br></br>
-      {isDisabled &&
-        <Link className="nav-link active" aria-current="page" to="/AddReview">
-        <button className="button-styling">Add your review</button>
-      </Link>
-      }
-
-      
-      <div className="reviews-container">
-      <h2>Customer Reviews</h2>
-      <div>
-        {reviews}
+      <div className="container">
+        <img src="./car.jpg" className="background-image" alt="Background Image" />
+        <div className="overlay-text">
+          <h2>Welcome to ApnaWheels by Car Tech</h2>
+          <p>Get the best car accessories</p>
+        </div>
       </div>
-      {/* Add a button or link to navigate to a full reviews page */}
-      
+      <br />
+      {isDisabled && (
+        <Link className="nav-link active" aria-current="page" to="/AddReview">
+          <button className="button-styling">Add your review</button>
+        </Link>
+      )}
+      <div className="reviews-container">
+        <h2>Customer Reviews</h2>
+        <div>
+          {reviews.map((review, index) => (
+            <Review key={index} review={review} />
+          ))}
+        </div>
+      </div>
     </div>
-    </div>
-    
   );
 };
 

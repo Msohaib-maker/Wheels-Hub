@@ -10,7 +10,7 @@ function NewCar() {
   const dispatch = useDispatch();
 
   // Fetch car list from Redux store using useSelector
-  const CarsData = useSelector(state => state.cars.CarsList);
+  const CarsData = useSelector(state => state.UsedCar.CarsList);
 
   useEffect(() => {
     const db = getDatabase();
