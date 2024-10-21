@@ -118,3 +118,25 @@ h3 {
 .contact-button:hover {
   background-color: #45a049;
 }
+
+/* src/components/CarGrid.css */
+.car-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); /* Change minmax value to set the number of cars per row */
+  gap: 20px; /* Adjust gap between cars */
+  padding: 20px;
+}
+
+.car {
+  background-color: rgb(29, 29, 29); /* Background color for the car */
+  border: 1px solid #ddd; /* Border around each car */
+  border-radius: 8px; /* Rounded corners */
+  padding: 16px; /* Padding inside the car box */
+  text-align: center; /* Center align text */
+}
+
+.car-image {
+  width: 100%; /* Make image responsive */
+  height: auto; /* Maintain aspect ratio */
+  border-radius: 8px; /* Rounded corners for images */
+}

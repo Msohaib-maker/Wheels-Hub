@@ -18,29 +18,25 @@ function CarSale(props) {
 
   return (
     <>
-      <div className="car-container">
-        <div className="image-container">
-          <img src={props.image} alt="Image" />
-        </div>
-        <div className="details-container">
-          <h3 style={{ color: 'blue' }}>{props.name} for sale</h3>
-          <p>{props.city}</p>
-          <br></br>
-          <p>{props.specs} | {props.cc} | {props.year} | Petrol</p>
-          <br></br>
-          <p>{props.type} Car</p>
-          <br></br>
-          <p>{props.info}</p>
-        </div>
-        <div className="price-container">
+      <div className="car">
+        
+        <img src={props.image} alt="Image" className='car-image' />
+        
+        <h3 style={{ color: 'blue' }}>{props.name} for sale</h3>
+        <p>{props.city}</p>
+        <p>{props.specs} | {props.cc} | {props.year} | Petrol</p>
+        <p>{props.type} Car</p>
+        <p>{props.info}</p>
+        
+        {/* <div className="price-container">
           <h3>PKR {props.price} lacs</h3>
-        </div>
-        <div className="button-container">
+        </div> */}
+        {/* <div className="button-container">
           <button className="contact-button" onClick={handleButtonClick}>
             {showPhoneNumber ? `Hide phone number` : `Show phone number`}
           </button>
           {showPhoneNumber && <p>{props.phoneNo}</p>}
-        </div>
+        </div> */}
       </div>
     </>
   );

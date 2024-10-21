@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { useSelector, useDispatch } from 'react-redux';
 import { fetchCars } from '../../reducers/carListSlice';
 import CarSale from "./CarSale";
+import CarGrid from "./CarGrid";
 
 function CarList() {
   const dispatch = useDispatch();
@@ -15,22 +16,16 @@ function CarList() {
 
   return (
     <>
-      <div className="container">
-        <img src="./car.jpg" className="background-image" alt="Background Image" />
-        <div className="overlay-text">
-          <h2>Welcome to ApnaWheels by Car Tech</h2>
-          <p>Get the best car accessories</p>
-        </div>
-      </div>
+      
       <br />
       <div>
-        <h1><center><i>Car List - Used / New</i></center></h1>
+        <h1>Car List - Used / New</h1>
       </div>
       <br />
       <ol>
         {status === 'loading' && <p>Loading...</p>}
         {status === 'failed' && <p>{error}</p>}
-        {carsList.map((car) => (
+        {/* {carsList.map((car) => (
           <CarSale
             key={car.carId} // Unique key prop
             name={car.carModel}
@@ -44,7 +39,8 @@ function CarList() {
             info="Updated by Car Tech"
             phoneNo={car.contact}
           />
-        ))}
+        ))} */}
+        <CarGrid cars={carsList}/>
       </ol>
     </>
   );
