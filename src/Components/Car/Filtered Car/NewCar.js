@@ -1,95 +1,82 @@
-import { useState, useEffect } from "react";
+// src/components/NewCar.js
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { getDatabase, ref, onValue } from "firebase/database";
+import { setCars } from "../../../reducers/UsedCarSlice";
 import CarSale from "../CarSale";
-import { getDatabase, ref, set, onValue } from "firebase/database";
 import FilteredCar from "./FilteredCar";
 
-function NewCar(props){
-    const [CarsData, setCarsData] = useState({
-        CarsList: []
-    })
+function NewCar() {
+  const dispatch = useDispatch();
 
-    let cars = []
+  // Fetch car list from Redux store using useSelector
+  const CarsData = useSelector(state => state.cars.CarsList);
+
+  useEffect(() => {
     const db = getDatabase();
     const CarListRef = ref(db, 'cars/');
-
+    
     onValue(CarListRef, (snapshot) => {
-        const data = snapshot.val();
+      const data = snapshot.val();
 
-        if (data == null) {
-            console.log("yes data null")
-        }
+      if (data) {
+        const dataArray = Object.values(data);
+        const filteredCars = dataArray
+          .filter(ele => ele.type === "New") // Filter for new cars
+          .map(ele => ({
+            carId: ele.carId,
+            carModel: ele.carModel,
+            price: ele.price,
+            city: ele.city,
+            mileage: ele.mileage,
+            engine: ele.engine,
+            year: ele.year,
+            type: ele.type,
+            image: ele.file.file_remote,
+            contact: ele.contact
+          }));
 
-        if (data) {
-            const dataArray = Object.values(data);
-            if (dataArray == null) {
-                console.log("yes dataArray null")
-            }
-
-            cars = dataArray
-            .filter(ele => ele.type === "New") // Filter the array based on the condition
-            .map(ele => (
-              <CarSale
-                key={ele.carId}
-                name={ele.carModel}
-                price={ele.price}
-                city={ele.city}
-                specs={ele.mileage}
-                cc={ele.engine}
-                year={ele.year}
-                type={ele.type}
-                image={ele.file.file_remote}
-                info="Updated by Car Tech"
-                phoneNo={ele.contact}
-              />
-            ));
-          
-
-
-            // let isUpdate = false;
-            if (cars == null) {
-                console.log("yes cars null")
-            }
-            if (CarsData.CarsList == null) {
-                console.log("yes CarsList null")
-            }
-            if (CarsData.CarsList != null && cars != null) {
-                let k = cars.length;
-                let j = CarsData.CarsList.length;
-                console.log(k + " " + j)
-                if (k != j) {
-                    setCarsData({ CarsList: cars });
-                }
-            }
-
-
-            // setCarsData({ carList: cars });
-        } else {
-            console.log("No data available");
-        }
+        // Dispatch action to update the car list in the store
+        dispatch(setCars(filteredCars));
+      }
     });
+  }, [dispatch]);
 
+  let cars = CarsData.length
+    ? CarsData.map(car => (
+        <CarSale
+          key={car.carId}
+          name={car.carModel}
+          price={car.price}
+          city={car.city}
+          specs={car.mileage}
+          cc={car.engine}
+          year={car.year}
+          type={car.type}
+          image={car.image}
+          info="Updated by Car Tech"
+          phoneNo={car.contact}
+        />
+      ))
+    : <div>No New Cars Found!</div>;
 
-
-    return (
-        <>
-           
-            <br /><br />
-            <div>
-
-                <div>
-                    <h1><center><i>Car List - New</i></center></h1>
-                </div>
-                <br /><br />
-                <ol>
-                    {cars}
-                </ol>
-            </div>
-            <br/><br/>
-            <FilteredCar/>
-            <br/><br/>
-        </>
-    );
-
+  return (
+    <>
+      <br /><br />
+      <div>
+        <div>
+          <h1><center><i>Car List - New</i></center></h1>
+        </div>
+        <br /><br />
+        <ol>
+          {cars}
+        </ol>
+      </div>
+      <br /><br />
+      <FilteredCar />
+      <br /><br />
+    </>
+  );
 }
 
 export default NewCar;

@@ -1,120 +1,105 @@
-import React from 'react';
+// src/components/Header.js
+import React, { useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import './Header.css'
+import { useDispatch, useSelector } from 'react-redux';
 import { auth } from '../../Firebase/firebase';
-import { signOut, onAuthStateChanged } from "firebase/auth";
-import { useState, useEffect } from "react";
+import { signOut } from "firebase/auth";
+import { login, logout } from "../../reducers/NewAuthSlice"; // Import actions from the slice
+import './Header.css';
 
 function Header() {
     const navigate = useNavigate();
+    const dispatch = useDispatch();
 
-    const [isLoggedIn, setIsLoggedIn] = useState(false);
+    // Get authentication state from Redux store
+    const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
 
     useEffect(() => {
         const unsubscribe = auth.onAuthStateChanged((user) => {
             if (user) {
-
-                setIsLoggedIn(true);
+                // Dispatch login action
+                dispatch(login(user));
             } else {
-                setIsLoggedIn(false);
+                // Dispatch logout action
+                dispatch(logout());
             }
         });
 
         return () => unsubscribe();
-    }, []);
+    }, [dispatch]);
 
     const handleSignOut = () => {
         signOut(auth).then(() => {
-
+            dispatch(logout()); // Dispatch logout action on sign out
         }).catch((error) => {
-            // An error happened.
+            // Handle any errors here
+            console.error("Sign out error: ", error);
         });
     };
 
-
     const handleClick = () => {
-        if(isLoggedIn){
-        navigate('/Inspect' )   
-    
-    }
-    else{
-        navigate('/Login ')
-    }
+        if (isLoggedIn) {
+            navigate('/Inspect');
+        } else {
+            navigate('/Login');
+        }
+    };
 
-        };
-
-
-        
-
-     return (
+    return (
         <div>
-            <nav class="navbar navbar-expand-lg custom-navbar">
-                <div class="container-fluid">
-                    {/* <Link class="navbar-brand" to="/">CarTech</Link> */}
+            <nav className="navbar navbar-expand-lg custom-navbar">
+                <div className="container-fluid">
                     <Link className="navbar-brand" to="/">
                         <span className="car-highlight">CarTech</span>
                     </Link>
-                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
+                    <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <span className="navbar-toggler-icon"></span>
                     </button>
-                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                            <li class="nav-item">
-                                <Link class="nav-link active" aria-current="page" to="/">Home</Link>
+                    <div className="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul className="navbar-nav me-auto mb-2 mb-lg-0">
+                            <li className="nav-item">
+                                <Link className="nav-link active" aria-current="page" to="/">Home</Link>
                             </li>
-                            <li class="nav-item">
-                                <Link class="nav-link" to="/CarSale">Cars</Link>
+                            <li className="nav-item">
+                                <Link className="nav-link" to="/CarSale">Cars</Link>
                             </li>
-                            <li class="nav-item">
-                                <Link class="nav-link active" aria-current="page" to="/Accesories">Accesories</Link>
+                            <li className="nav-item">
+                                <Link className="nav-link active" aria-current="page" to="/Accesories">Accesories</Link>
                             </li>
-                            <li class="nav-item">
-                                <Link class="nav-link active" aria-current="page" to="/">Services</Link>
+                            <li className="nav-item">
+                                <Link className="nav-link active" aria-current="page" to="/">Services</Link>
                             </li>
-                            <li class="nav-item">
-                                <Link class="nav-link active" aria-current="page" to="/Review">Review</Link>
+                            <li className="nav-item">
+                                <Link className="nav-link active" aria-current="page" to="/Review">Review</Link>
                             </li>
-                            <li class="nav-item">
-                                <Link class="nav-link active" aria-current="page" to="/Inspect" onClick={(e) => {
+                            <li className="nav-item">
+                                <Link className="nav-link active" aria-current="page" to="/Inspect" onClick={(e) => {
                                     e.preventDefault();
                                     handleClick();
                                 }}>Inspection</Link>
                             </li>
-                            <li class="nav-item">
-                                <Link class="nav-link active" aria-current="page" to="/UploadCar">Post a Car</Link>
+                            <li className="nav-item">
+                                <Link className="nav-link active" aria-current="page" to="/UploadCar">Post a Car</Link>
                             </li>
-                            <li class="nav-item">
-                                <Link class="nav-link active" aria-current="page" to="/FilteredCar">Filtered Cars</Link>
+                            <li className="nav-item">
+                                <Link className="nav-link active" aria-current="page" to="/FilteredCar">Filtered Cars</Link>
                             </li>
                         </ul>
                     </div>
-                    {/* <form class="d-flex" role="search">
-                            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
-                            <button class="btn btn-outline-success" type="submit">Search</button>
-                        </form> */}
-
-                    {
-                        isLoggedIn &&
-                        <Link class="nav-link active" aria-current="page" onClick={handleSignOut}> Logout</Link>
-                    }
-                    {
-                        !isLoggedIn &&
-                        <div class="row">
-                            <Link class="nav-link active" aria-current="page" to="/Signup"> SignUp</Link>
-                            <Link class="nav-link active" aria-current="page" to="/Login"> Login</Link>
+                    
+                    {/* Conditionally render Logout, Signup, Login, and User Info */}
+                    {isLoggedIn ? (
+                        <>
+                            <Link className="nav-link active" aria-current="page" onClick={handleSignOut}> Logout</Link>
+                            <Link className="nav-link active" aria-current="page" to="/UserInfo">User Info</Link>
+                        </>
+                    ) : (
+                        <div className="row">
+                            <Link className="nav-link active" aria-current="page" to="/Signup"> SignUp</Link>
+                            <Link className="nav-link active" aria-current="page" to="/Login"> Login</Link>
                         </div>
-                    }
-                    {
-                        isLoggedIn &&
-                        <Link
-                        className="nav-link active"
-                        aria-current="page"
-                        to="/UserInfo"
-                    >
-                        User Info
-                    </Link>
-                    }
-                    </div>
+                    )}
+                </div>
             </nav>
         </div>
     );
