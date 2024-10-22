@@ -55,19 +55,9 @@
   height: 235px; /* Adjust the width as needed */
   background-color: #e5f1fb;
 }
-.image-container {
-  flex: 1;
-  overflow: hidden;
-  margin: 20px;
-  border: 1px solid #c6c1c1;
-  border-radius: 8px;
-}
 
-img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
+
+
 .details-container {
   flex: 1;
   padding: 20px;
@@ -76,6 +66,11 @@ img {
 h2 {
   font-size: 1.8rem;
   margin-bottom: 10px;
+}
+
+h1{
+  color: wheat;
+  padding-left: 40px;
 }
 
 p {
@@ -87,6 +82,7 @@ h3 {
   font-size: 1.2rem;
   margin-right: 10px;
   margin-bottom: 20px;
+  color: white;
 }
 
 .car-container:hover {
@@ -123,20 +119,32 @@ h3 {
 .car-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); /* Change minmax value to set the number of cars per row */
-  gap: 20px; /* Adjust gap between cars */
+  gap: 30px; /* Adjust gap between cars */
   padding: 20px;
 }
 
 .car {
   background-color: rgb(29, 29, 29); /* Background color for the car */
-  border: 1px solid #ddd; /* Border around each car */
+  border: 1px solid #676767; /* Border around each car */
   border-radius: 8px; /* Rounded corners */
   padding: 16px; /* Padding inside the car box */
   text-align: center; /* Center align text */
+  transition: box-shadow 0.3s ease; /* Smooth shadow transition on hover */
+  box-shadow: 0 4px 8px rgba(142, 92, 55, 0.6); /* Light shadow effect */
+}
+
+.car:hover{
+  transform: scale(1.05);
+  border-color: orange;
+  box-shadow: 0 8px 16px rgba(205, 86, 16, 0.8); /* Stronger shadow on hover */
+}
+
+.car:hover h3{
+  color: orange;
 }
 
 .car-image {
   width: 100%; /* Make image responsive */
-  height: auto; /* Maintain aspect ratio */
+  height: 250px; /* Maintain aspect ratio */
   border-radius: 8px; /* Rounded corners for images */
 }

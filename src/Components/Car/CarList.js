@@ -19,7 +19,7 @@ function CarList() {
       
       <br />
       <div>
-        <h1>Car List - Used / New</h1>
+        <h1>New & Used Cars</h1>
       </div>
       <br />
       <ol>

@@ -24,7 +24,7 @@ const Reviews = () => {
   const db = getDatabase();
   const nav = useNavigate();
   const dispatch = useDispatch();
-  const reviews = useSelector((state) => state.reviews.reviews);
+  const reviews = useSelector((state) => state.reviewReducer.reviews);
 
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged((user) => {

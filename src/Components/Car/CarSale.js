@@ -21,12 +21,14 @@ function CarSale(props) {
       <div className="car">
         
         <img src={props.image} alt="Image" className='car-image' />
+        <br></br>
+        <br></br>
         
-        <h3 style={{ color: 'blue' }}>{props.name} for sale</h3>
-        <p>{props.city}</p>
+        <h3>{props.name}</h3>
+        {/* <p>{props.city}</p>
         <p>{props.specs} | {props.cc} | {props.year} | Petrol</p>
         <p>{props.type} Car</p>
-        <p>{props.info}</p>
+        <p>{props.info}</p> */}
         
         {/* <div className="price-container">
           <h3>PKR {props.price} lacs</h3>
