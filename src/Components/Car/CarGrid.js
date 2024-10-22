@@ -6,7 +6,7 @@ import './CarSale.css'; // Optional: create a CSS file for grid styles
 const CarGrid = ({ cars }) => {
   return (
     <div className="car-grid">
-      {cars.map((car, index) => (
+      {cars.map((car) => (
         <Car name={car.carModel}
         price={car.price}
         city={car.city}
@@ -14,7 +14,7 @@ const CarGrid = ({ cars }) => {
         cc={car.engine}
         year={car.year}
         type={car.type}
-        image={car.file.file_remote}/>
+        image={car.image}/>
       ))}
     </div>
   );

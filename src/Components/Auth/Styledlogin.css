@@ -111,6 +111,7 @@
     border: 1px solid wheat;
     background-color: rgb(35,35,35);
     border-radius: 5px;
+    color: wheat;
   }
   
   .form-container button {

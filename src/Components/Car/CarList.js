@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useMemo  } from "react";
 import { useSelector, useDispatch } from 'react-redux';
 import { fetchCars } from '../../reducers/carListSlice';
 import CarSale from "./CarSale";
@@ -8,11 +8,28 @@ function CarList() {
   const dispatch = useDispatch();
   const { carsList, status, error } = useSelector((state) => state.carList);
 
+  
+
   useEffect(() => {
     if (status === 'idle') {
       dispatch(fetchCars());
     }
   }, [status, dispatch]);
+
+
+  // Use useMemo to memoize MyCars so it only recalculates when carsList changes
+  const MyCars = useMemo(() => carsList.map(ele => ({
+    carId: ele.carId,
+    carModel: ele.carModel,
+    price: ele.price,
+    city: ele.city,
+    mileage: ele.mileage,
+    engine: ele.engine,
+    year: ele.year,
+    type: ele.type,
+    image: ele.file.file_remote,
+    contact: ele.contact
+  })), [carsList]); // Only recalculate when carsList changes
 
   return (
     <>
@@ -40,7 +57,7 @@ function CarList() {
             phoneNo={car.contact}
           />
         ))} */}
-        <CarGrid cars={carsList}/>
+        <CarGrid cars={MyCars}/>
       </ol>
     </>
   );

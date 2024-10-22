@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getDatabase, ref, onValue } from "firebase/database";
 import { setCars } from "../../../reducers/UsedCarSlice";
 import CarSale from "../CarSale";
+import CarGrid from "../CarGrid";
 import FilteredCar from "./FilteredCar";
 
 function UsedCar() {
@@ -42,22 +43,26 @@ function UsedCar() {
     });
   }, [dispatch]);
 
+  // let cars = CarsData.length
+  //   ? CarsData.map(car => (
+  //       <CarSale
+  //         key={car.carId}
+  //         name={car.carModel}
+  //         price={car.price}
+  //         city={car.city}
+  //         specs={car.mileage}
+  //         cc={car.engine}
+  //         year={car.year}
+  //         type={car.type}
+  //         image={car.image}
+  //         info="Updated by Car Tech"
+  //         phoneNo={car.contact}
+  //       />
+  //     ))
+    
+  //   : <div>No Used Cars Found!</div>;
   let cars = CarsData.length
-    ? CarsData.map(car => (
-        <CarSale
-          key={car.carId}
-          name={car.carModel}
-          price={car.price}
-          city={car.city}
-          specs={car.mileage}
-          cc={car.engine}
-          year={car.year}
-          type={car.type}
-          image={car.image}
-          info="Updated by Car Tech"
-          phoneNo={car.contact}
-        />
-      ))
+    ? <CarGrid cars={CarsData} />
     : <div>No Used Cars Found!</div>;
 
   return (

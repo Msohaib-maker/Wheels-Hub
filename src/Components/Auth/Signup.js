@@ -57,7 +57,7 @@ const SignupForm = () => {
             <p>Create Your Account</p>
             <form className="signup-form" onSubmit={handleSignup}>
               <label>
-                Full Name:
+                Full Name
                 <input
                   type="text"
                   value={fullName}
@@ -65,7 +65,7 @@ const SignupForm = () => {
                 />
               </label>
               <label>
-                Email:
+                Email
 
               
                 <input
@@ -75,15 +75,15 @@ const SignupForm = () => {
                 />
               </label>
               <label>
-                Password:
+                Password
                 <input
-                  type="text"
+                  type="password"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                 />
               </label>
               <label>
-                Street Address:
+                Street Address
                 <input
                   type="text"
                   value={streetAddress}
@@ -91,7 +91,7 @@ const SignupForm = () => {
                 />
               </label>
               <label>
-                City:
+                City
                 <input
                   type="text"
                   value={city}
@@ -99,7 +99,7 @@ const SignupForm = () => {
                 />
               </label>
               <label>
-                Country:
+                Country
                 <input
                   type="text"
                   value={country}
@@ -107,7 +107,7 @@ const SignupForm = () => {
                 />
               </label>
               <label>
-                Postal Code:
+                Postal Code
                 <input
                   type="text"
                   value={postalCode}
@@ -119,7 +119,7 @@ const SignupForm = () => {
             {signupError && <div className="error">{signupError}</div>}
             </div>
             <div className='simple-div-container'>
-              <img src='./car.jpg'></img>
+              <img src='./car-real-dark.jpg'></img>
             </div>
           </div>  
           

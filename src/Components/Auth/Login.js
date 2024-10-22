@@ -35,7 +35,7 @@ const LoginForm = () => {
         <p>Login to Your Account</p>
         <form className="login-form" onSubmit={handleLogin}>
           <label>
-            Username:
+            Username/Email
             <input
               type="text"
               value={username}
@@ -43,7 +43,7 @@ const LoginForm = () => {
             />
           </label>
           <label>
-            Password:
+            Password
             <input
               type="password"
               value={password}

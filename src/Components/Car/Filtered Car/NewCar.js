@@ -5,6 +5,7 @@ import { getDatabase, ref, onValue } from "firebase/database";
 import { setCars } from "../../../reducers/UsedCarSlice";
 import CarSale from "../CarSale";
 import FilteredCar from "./FilteredCar";
+import CarGrid from "../CarGrid";
 
 function NewCar() {
   const dispatch = useDispatch();
@@ -42,23 +43,26 @@ function NewCar() {
     });
   }, [dispatch]);
 
+  // let cars = CarsData.length
+  //   ? CarsData.map(car => (
+  //       <CarSale
+  //         key={car.carId}
+  //         name={car.carModel}
+  //         price={car.price}
+  //         city={car.city}
+  //         specs={car.mileage}
+  //         cc={car.engine}
+  //         year={car.year}
+  //         type={car.type}
+  //         image={car.image}
+  //         info="Updated by Car Tech"
+  //         phoneNo={car.contact}
+  //       />
+  //     ))
+  //   : <div>No New Cars Found!</div>;
   let cars = CarsData.length
-    ? CarsData.map(car => (
-        <CarSale
-          key={car.carId}
-          name={car.carModel}
-          price={car.price}
-          city={car.city}
-          specs={car.mileage}
-          cc={car.engine}
-          year={car.year}
-          type={car.type}
-          image={car.image}
-          info="Updated by Car Tech"
-          phoneNo={car.contact}
-        />
-      ))
-    : <div>No New Cars Found!</div>;
+    ? <CarGrid cars={CarsData} />
+    : <div>No Used Cars Found!</div>;
 
   return (
     <>
