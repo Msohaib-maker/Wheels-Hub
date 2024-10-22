@@ -1,12 +1,12 @@
 .signup-container {
-  display: flex;
   justify-content: center;
   align-items: center;
   height: auto;
   width: auto;
+  background-color: black;
   }
   
-  .form-container {
+  /* .form-container1 {
     padding: 20px;
     background-color: rgba(29, 29, 29, 0.8);
     border-radius: 10px;
@@ -14,7 +14,7 @@
     min-width: 600px;
   }
   
-  .form-container p {
+  .form-container1 p {
     text-align: center;
     color: wheat;
     padding: 10px;
@@ -22,17 +22,17 @@
     font-weight: bold;
   }
 
-  .form-container label{
+  .form-container1 label{
     color: white;
   }
   
-  .form-container label {
+  .form-container1 label {
     justify-content: left;
     display: block;
     margin-bottom: 10px;
   }
   
-  .form-container input {
+  .form-container1 input {
     padding: 10px;
     justify-self: center;
     width: calc(100%);
@@ -41,7 +41,7 @@
     background-color: #5b5b5b;
   }
   
-  .form-container button {
+  .form-container1 button {
     background-color: orange;
     color: white;
     padding: 10px;
@@ -53,5 +53,5 @@
   
   button:hover {
     background-color: greenyellow;
-  }
+  } */
   

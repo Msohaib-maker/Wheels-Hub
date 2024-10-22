@@ -3,6 +3,8 @@ import './StyledSignup.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { signupUser } from '../../reducers/signupSlice'; // Import the signup slice
 import { Link, useNavigate } from 'react-router-dom';
+import './Styledlogin.css';
+
 
 const SignupForm = () => {
   const [fullName, setFullName] = useState('');
@@ -49,7 +51,9 @@ const SignupForm = () => {
         <div>Loading...</div>
       ) : (
         <div className="signup-container">
-          <div className="form-container">
+          
+          <div className='rounded-container'>
+            <div className="form-container">
             <p>Create Your Account</p>
             <form className="signup-form" onSubmit={handleSignup}>
               <label>
@@ -113,8 +117,11 @@ const SignupForm = () => {
               <button type="submit">Sign Up</button>
             </form>
             {signupError && <div className="error">{signupError}</div>}
-          </div>
-
+            </div>
+            <div className='simple-div-container'>
+              <img src='./car.jpg'></img>
+            </div>
+          </div>  
           
         </div>
         

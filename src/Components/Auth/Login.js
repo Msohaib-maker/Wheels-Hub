@@ -32,7 +32,7 @@ const LoginForm = () => {
     <div className="login-container">
       <div class="rounded-container">
       <div className="form-container">
-        <h2>Login to Your Car Account</h2>
+        <p>Login to Your Account</p>
         <form className="login-form" onSubmit={handleLogin}>
           <label>
             Username:
@@ -56,8 +56,8 @@ const LoginForm = () => {
         </form>
         {authState.error && <p className="error">{authState.error}</p>}
       </div>
-      <div className="image-container">
-        <img src="./dark-theme.jpg" alt="Car" />
+      <div className="simple-div-container">
+        <img src="./car.jpg" alt="Car" />
       </div>
 
       </div>
