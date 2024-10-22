@@ -22,7 +22,7 @@ const Reviews = () => {
   const [uid, setUid] = useState('');
 
   const db = getDatabase();
-  const nav = useNavigate();
+  // const nav = useNavigate();
   const dispatch = useDispatch();
   const reviews = useSelector((state) => state.reviewReducer.reviews);
 
@@ -53,21 +53,20 @@ const Reviews = () => {
 
   return (
     <div>
-      <div className="container">
-        <img src="./car.jpg" className="background-image" alt="Background Image" />
-        <div className="overlay-text">
-          <h2>Welcome to ApnaWheels by Car Tech</h2>
-          <p>Get the best car accessories</p>
-        </div>
-      </div>
+      
       <br />
-      {isDisabled && (
-        <Link className="nav-link active" aria-current="page" to="/AddReview">
-          <button className="button-styling">Add your review</button>
-        </Link>
-      )}
+      <div className='special-container'>
+        {isDisabled && (
+          <Link className="nav-link active" aria-current="page" to="/AddReview">
+            <button className="button-styling">Add your review</button>
+          </Link>
+        )}
+      </div>
+      
+
       <div className="reviews-container">
         <h2>Customer Reviews</h2>
+        <br></br>
         <div>
           {reviews.map((review, index) => (
             <Review key={index} review={review} />

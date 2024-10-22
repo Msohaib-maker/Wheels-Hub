@@ -1,40 +1,48 @@
 .signup-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    background-image: "./mercedes-benz-car.jpg"; 
-    background-size: cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: auto;
+  width: auto;
   }
   
   .form-container {
-    width: 300px;
     padding: 20px;
-    background-color: rgba(255, 255, 255, 0.8);
+    background-color: rgba(29, 29, 29, 0.8);
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    min-width: 600px;
   }
   
-  h2 {
+  .form-container p {
     text-align: center;
+    color: wheat;
+    padding: 10px;
+    font-size: 40px;
+    font-weight: bold;
+  }
+
+  .form-container label{
+    color: white;
   }
   
-  label {
+  .form-container label {
     justify-content: left;
     display: block;
     margin-bottom: 10px;
   }
   
-  input {
-    width: calc(100% - 20px);
+  .form-container input {
     padding: 10px;
-    margin-bottom: 15px;
-    border: 1px solid #ccc;
+    justify-self: center;
+    width: calc(100%);
+    border: 1px solid whitesmoke;
     border-radius: 5px;
+    background-color: #5b5b5b;
   }
   
-  button {
-    background-color: #3498db;
+  .form-container button {
+    background-color: orange;
     color: white;
     padding: 10px;
     border: none;
@@ -44,6 +52,6 @@
   }
   
   button:hover {
-    background-color: #2980b9;
+    background-color: greenyellow;
   }
   

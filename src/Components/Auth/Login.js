@@ -30,6 +30,7 @@ const LoginForm = () => {
 
   return (
     <div className="login-container">
+      <div class="rounded-container">
       <div className="form-container">
         <h2>Login to Your Car Account</h2>
         <form className="login-form" onSubmit={handleLogin}>
@@ -53,11 +54,17 @@ const LoginForm = () => {
             {authState.status === 'loading' ? 'Logging in...' : 'Login'}
           </button>
         </form>
-
         {authState.error && <p className="error">{authState.error}</p>}
       </div>
+      <div className="image-container">
+        <img src="./dark-theme.jpg" alt="Car" />
+      </div>
+
+      </div>
+      
     </div>
   );
+  
 };
 
 export default LoginForm;

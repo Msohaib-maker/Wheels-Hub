@@ -17,8 +17,8 @@ const SignupForm = () => {
   const nav = useNavigate();
   
   // Redux state to track signup status and error
-  const signupStatus = useSelector((state) => state.signup.status);
-  const signupError = useSelector((state) => state.signup.error);
+  const signupStatus = useSelector((state) => state.RegisterReducer.status);
+  const signupError = useSelector((state) => state.RegisterReducer.error);
 
   const handleSignup = (e) => {
     e.preventDefault();
@@ -50,7 +50,7 @@ const SignupForm = () => {
       ) : (
         <div className="signup-container">
           <div className="form-container">
-            <h2>Create Your Car Account</h2>
+            <p>Create Your Account</p>
             <form className="signup-form" onSubmit={handleSignup}>
               <label>
                 Full Name:
@@ -62,6 +62,8 @@ const SignupForm = () => {
               </label>
               <label>
                 Email:
+
+              
                 <input
                   type="email"
                   value={email}
@@ -112,8 +114,14 @@ const SignupForm = () => {
             </form>
             {signupError && <div className="error">{signupError}</div>}
           </div>
+
+          
         </div>
+        
       )}
+
+      <br></br>
+      <br></br>
     </div>
   );
 };

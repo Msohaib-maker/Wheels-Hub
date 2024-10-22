@@ -1,4 +1,4 @@
-.login-container {
+/* .login-container {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -15,8 +15,9 @@
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   }
   
-  h2 {
+  .form-container h2 {
     text-align: center;
+    color: wheat;
   }
   
   label {
@@ -26,6 +27,78 @@
   
   input {
     width: 70%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  button {
+    background-color: #4caf50;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+  }
+  
+  button:hover {
+    background-color: #45a049;
+  } */
+  
+  .login-container {
+    /* display: flex; */
+    height: 100vh;
+    width: 100%;
+    align-items: center;
+    /* justify-content: space-between; */
+    background-color: black; /* Fallback background */
+  }
+
+  .rounded-container {
+
+    display: flex;
+    justify-content: space-between;
+    width: 80%; /* Set the width to 70% of the total screen width */
+    height: auto; /* Set a height for the container */
+    padding: 20px; /* Add some padding */
+    background-color: rgba(29, 29, 29, 0.6); /* Background color */
+    border-radius: 10px; /* Rounded corners */
+    margin: 120px;
+  }
+  
+  .form-container{
+    flex: 1; /* This ensures equal width for both containers */
+    padding: 20px;
+    background-color: rgba(29, 29, 29, 0.6);
+    border-radius: 10px;
+    margin: 5px;
+  }
+  
+  .image-container {
+    flex: 1; /* This ensures equal width for both containers */
+    border-radius: 10px;
+    margin: 5px; 
+  }
+
+  .image-container img {
+    width: 100%; /* Make the image take up the full container width */
+    border-radius: 10px;
+  }
+  
+  .form-container h2 {
+    text-align: center;
+    color: wheat;
+  }
+  
+  label {
+    display: block;
+    margin-bottom: 10px;
+  }
+  
+  .form-container input {
+    width: 80%;
     padding: 10px;
     margin-bottom: 15px;
     border: 1px solid #ccc;
