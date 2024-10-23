@@ -71,8 +71,8 @@ function UploadCar() {
   return (
     <div>
       <form onSubmit={handleSubmit} className="form-style">
-        <label htmlFor="upload-image">Upload Image</label>
-        <input id="upload-image" type="file" onChange={handleChange} />
+        <label htmlFor="upload-image" className='label-style'>Upload Image</label>
+        <input id="upload-image" type="file" className='img-input' onChange={handleChange} />
         {carData.file.file_local && <img id="my-img" src={carData.file.file_local} alt="Preview" />}
         <input type="text" className="form-control" id="carModel" placeholder="Car Model" onChange={handleInputChange} value={carData.carModel} />
         <input type="text" className="form-control" id="price" placeholder="Enter Price" onChange={handleInputChange} value={carData.price} />
@@ -87,7 +87,7 @@ function UploadCar() {
           <option>Old</option>
         </select>
 
-        <button type="submit" className="btn btn-primary">
+        <button type="submit" className="btn-style">
           Upload
         </button>
       </form>

@@ -125,12 +125,12 @@ h3 {
 
 .car {
   background-color: rgb(29, 29, 29); /* Background color for the car */
-  border: 1px solid #676767; /* Border around each car */
+  /* border: 1px solid #676767; Border around each car */
   border-radius: 8px; /* Rounded corners */
   padding: 16px; /* Padding inside the car box */
   text-align: center; /* Center align text */
   transition: box-shadow 0.3s ease; /* Smooth shadow transition on hover */
-  box-shadow: 0 4px 8px rgba(142, 92, 55, 0.6); /* Light shadow effect */
+  /* box-shadow: 0 4px 8px rgba(142, 92, 55, 0.6); Light shadow effect */
 }
 
 .car:hover{

@@ -3,7 +3,7 @@
   background-color: black;
   /* Adjust other styles as needed */
 }
-  .background-image {
+  /* .background-image {
     width: auto;
     height: auto;
     display: block;
@@ -23,7 +23,7 @@
     margin-bottom: 10px;
     font-size: 48px;
     color: white;
-  }
+  } */
   
   .overlay-text p {
     font-size: 16px;
@@ -33,18 +33,22 @@
 
 
 .item-list {
-    list-style: none;
-    padding: 0;
-    margin: 0;
+    list-style:none;
+    padding: 0px;
+    margin-left: 10px;
+    margin-right: 10px;
     display: flex;
-    gap: 20px; /* Adjust the gap between items */
+    gap: 0px; /* Adjust the gap between items */
+    background-color: black;
+
   }
 
   .Box2{
     padding: 15px;
-    width: 220px;
+    width: 250px;
     height: auto;
-    margin-left: 10px;
+    margin-left: 8px;
+    margin-right: 8px;
     border-radius: 15px; /* Adjust as needed for the roundness */
     background-color: rgb(29, 29, 29);;
     box-shadow: 0px 4px 6px rgba(15, 14, 14, 0.1);
@@ -81,6 +85,7 @@
 .h2-style{
   color: white;
   font-size: 36px;
+  margin: 20px;
 }
 
 .custom-button {
@@ -89,12 +94,13 @@
     border: none;
     padding: 8px 16px;
     border-radius: 15px;
+    width: 100%;
   }
 
 
 
   .text-style{
-    font-size: 20px;
+    font-size: 24px;
     font-weight: 500;
     color: rgb(252, 248, 248);
     
@@ -103,7 +109,7 @@
   .text-style2{
     font-size: 15px;
     color: rgb(176, 176, 176);
-    font-weight: 700;
+    font-weight: 300;
   }
 
 

@@ -64,7 +64,9 @@
 
 .text-color1{
   color: orange;
+  justify-self: center;
   padding-top: 30px;
+
 }
 
 .main-text{
