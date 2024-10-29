@@ -4,7 +4,7 @@ import { getStorage } from "@firebase/storage";
 import { getAuth } from "firebase/auth";
 
 const firebaseConfig = {
-    apiKey: "AIzaSyCTFdsNOf74GwPSYQTDPcaWshSkVVtp9h8",
+    apiKey: "",
     authDomain: "atyourdoorstep-a5c85.firebaseapp.com",
     databaseURL: "https://atyourdoorstep-a5c85-default-rtdb.firebaseio.com",
     projectId: "atyourdoorstep-a5c85",
